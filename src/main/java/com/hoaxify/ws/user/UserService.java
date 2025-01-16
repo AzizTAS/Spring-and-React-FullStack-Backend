@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 
 import com.hoaxify.ws.email.EmailService;
 import com.hoaxify.ws.user.exception.ActivationNotificationException;
+import com.hoaxify.ws.user.exception.InvalidTokenException;
 import com.hoaxify.ws.user.exception.NotUniqueEmailException;
 
 import jakarta.transaction.Transactional;
@@ -19,13 +20,12 @@ public class UserService {
     private final UserRepository userRepository;
     private final EmailService emailService;
 
-    public UserService(UserRepository userRepository , EmailService emailService) {
+    public UserService(UserRepository userRepository, EmailService emailService) {
         this.userRepository = userRepository;
         this.emailService = emailService;
     }
 
     PasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
-
 
     @Transactional(rollbackOn = MailException.class)
     public void save(User user) {
@@ -33,14 +33,22 @@ public class UserService {
             user.setPassword(passwordEncoder.encode(user.getPassword()));
             user.setActivationToken(UUID.randomUUID().toString());
             userRepository.saveAndFlush(user);
-            emailService.sendActivationEmail(user.getEmail(),user.getActivationToken());
+            emailService.sendActivationEmail(user.getEmail(), user.getActivationToken());
         } catch (DataIntegrityViolationException exception) {
             throw new NotUniqueEmailException();
-        }
-        catch(MailException exception){
+        } catch (MailException exception) {
             throw new ActivationNotificationException();
         }
     }
 
-    
+    public void activateUser(String token) {
+        User inDB = userRepository.findByActivationToken(token);
+        if (inDB == null) {
+            throw new InvalidTokenException();
+        }
+        inDB.setActive(true);
+        inDB.setActivationToken(null);
+        userRepository.save(inDB);
+
+    }
 }
