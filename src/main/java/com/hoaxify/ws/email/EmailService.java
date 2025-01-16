@@ -51,6 +51,7 @@ public class EmailService {
 
     public void sendActivationEmail(String email, String activationToken) {
         var activationUrl = hoaxifyProperties.getClient().host() + "/activation/" + activationToken;
+        System.out.println("Activation URL: " + activationUrl);
         var title = messageSource.getMessage("hoaxify.mail.user.created.title", null, LocaleContextHolder.getLocale());
         var clickHere = messageSource.getMessage("hoaxify.mail.click.here", null, LocaleContextHolder.getLocale());
 
