@@ -9,7 +9,7 @@ import jakarta.persistence.Table;
 import jakarta.persistence.UniqueConstraint;
 
 @Entity
-@Table(name = "users", uniqueConstraints = @UniqueConstraint(columnNames = { "email" }))
+@Table(name="users", uniqueConstraints = @UniqueConstraint(columnNames = {"email"}))
 public class User {
 
     @Id
@@ -28,26 +28,8 @@ public class User {
 
     @JsonIgnore
     String activationToken;
-    
+
     String image;
-    String firstName;
-    String lastName;
-
-    public String getFirstName() {
-        return firstName;
-    }
-
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
-    }
-
-    public String getLastName() {
-        return lastName;
-    }
-
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
-    }
 
     public String getImage() {
         return image;
@@ -57,20 +39,20 @@ public class User {
         this.image = image;
     }
 
-    public boolean isActive() {
-        return active;
-    }
-
-    public void setActive(boolean active) {
-        this.active = active;
-    }
-
     public String getActivationToken() {
         return activationToken;
     }
 
     public void setActivationToken(String activationToken) {
         this.activationToken = activationToken;
+    }
+
+    public boolean isActive() {
+        return active;
+    }
+
+    public void setActive(boolean active) {
+        this.active = active;
     }
 
     public long getId() {
@@ -104,4 +86,7 @@ public class User {
     public void setPassword(String password) {
         this.password = password;
     }
+
+
+    
 }
