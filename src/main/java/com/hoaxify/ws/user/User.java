@@ -1,6 +1,6 @@
 package com.hoaxify.ws.user;
 
-
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -8,34 +8,35 @@ import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 import jakarta.persistence.UniqueConstraint;
 
-
 @Entity
-@Table(name = "users", uniqueConstraints = @UniqueConstraint(columnNames = { "email" }))
+@Table(name="users", uniqueConstraints = @UniqueConstraint(columnNames = {"email"}))
 public class User {
 
     @Id
     @GeneratedValue
     long id;
 
-    
     String username;
 
-    
     String email;
 
-    
+    @JsonIgnore
     String password;
 
+    @JsonIgnore
     boolean active = false;
 
+    @JsonIgnore
     String activationToken;
 
-    public boolean isActive() {
-        return active;
+    String image;
+
+    public String getImage() {
+        return image;
     }
 
-    public void setActive(boolean active) {
-        this.active = active;
+    public void setImage(String image) {
+        this.image = image;
     }
 
     public String getActivationToken() {
@@ -44,6 +45,14 @@ public class User {
 
     public void setActivationToken(String activationToken) {
         this.activationToken = activationToken;
+    }
+
+    public boolean isActive() {
+        return active;
+    }
+
+    public void setActive(boolean active) {
+        this.active = active;
     }
 
     public long getId() {
@@ -77,4 +86,7 @@ public class User {
     public void setPassword(String password) {
         this.password = password;
     }
+
+
+    
 }
