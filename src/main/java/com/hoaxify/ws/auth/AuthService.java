@@ -1,7 +1,6 @@
 package com.hoaxify.ws.auth;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -17,18 +16,24 @@ import com.hoaxify.ws.user.dto.UserDTO;
 @Service
 public class AuthService {
 
-    @Autowired
-    UserService userService;
+    private final UserService userService;
 
-    PasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+    private final PasswordEncoder passwordEncoder;
 
-    @Autowired
-    TokenService tokenService;
+    private final TokenService tokenService;
+
+    public AuthService(UserService userService, PasswordEncoder passwordEncoder, TokenService tokenService) {
+        this.userService = userService;
+        this.passwordEncoder = passwordEncoder;
+        this.tokenService = tokenService;
+    }
 
     public AuthResponse authenticate(Credentials creds) {
         User inDB = userService.findByEmail(creds.email());
-        if(inDB == null) throw new AuthenticationException();
-        if(!passwordEncoder.matches(creds.password(), inDB.getPassword())) throw new AuthenticationException();
+        if (inDB == null)
+            throw new AuthenticationException();
+        if (!passwordEncoder.matches(creds.password(), inDB.getPassword()))
+            throw new AuthenticationException();
         Token token = tokenService.createToken(inDB, creds);
         AuthResponse authResponse = new AuthResponse();
         authResponse.setToken(token);
@@ -36,5 +41,9 @@ public class AuthService {
         return authResponse;
 
     }
-    
+
+    public void logout(String authorizationHeader) {
+        tokenService.logout(authorizationHeader);
+    }
+
 }
