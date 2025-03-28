@@ -1,69 +1,89 @@
 package com.hoaxify.ws.user;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.i18n.LocaleContextHolder;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.hoaxify.ws.auth.token.TokenService;
+import com.hoaxify.ws.configuration.CurrentUser;
 import com.hoaxify.ws.shared.GenericMessage;
 import com.hoaxify.ws.shared.Messages;
+import com.hoaxify.ws.user.dto.PasswordResetRequest;
+import com.hoaxify.ws.user.dto.PasswordUpdate;
 import com.hoaxify.ws.user.dto.UserCreate;
 import com.hoaxify.ws.user.dto.UserDTO;
 import com.hoaxify.ws.user.dto.UserUpdate;
-import com.hoaxify.ws.user.exception.AuthorizationException;
 
 import jakarta.validation.Valid;
 
 @RestController
 public class UserController {
 
-    @Autowired
-    UserService userService;
+    private final UserService userService;
 
-    @Autowired
-    TokenService tokenService;
+    public UserController(UserService userService) {
+        this.userService = userService;
+    }
 
     @PostMapping("/api/v1/users")
-    GenericMessage createUser(@Valid @RequestBody UserCreate user){
+    GenericMessage createUser(@Valid @RequestBody UserCreate user) {
         userService.save(user.toUser());
-        String message = Messages.getMessageForLocale("hoaxify.create.user.success.message", LocaleContextHolder.getLocale());
+        String message = Messages.getMessageForLocale("hoaxify.create.user.success.message",
+                LocaleContextHolder.getLocale());
         return new GenericMessage(message);
     }
 
     @PatchMapping("/api/v1/users/{token}/active")
-    GenericMessage activateUser(@PathVariable String token){
+    GenericMessage activateUser(@PathVariable String token) {
         userService.activateUser(token);
-        String message = Messages.getMessageForLocale("hoaxify.activate.user.success.message", LocaleContextHolder.getLocale());
+        String message = Messages.getMessageForLocale("hoaxify.activate.user.success.message",
+                LocaleContextHolder.getLocale());
         return new GenericMessage(message);
     }
 
     @GetMapping("/api/v1/users")
-    Page<UserDTO> getUsers(Pageable page, @RequestHeader(name="Authorization", required = false) String authorizationHeader){
-        var loggedInUser = tokenService.verifyToken(authorizationHeader);
-        return userService.getUsers(page, loggedInUser).map(UserDTO::new);
+    Page<UserDTO> getUsers(Pageable page, @AuthenticationPrincipal CurrentUser currentUser) {
+        return userService.getUsers(page, currentUser).map(UserDTO::new);
     }
 
     @GetMapping("/api/v1/users/{id}")
-    UserDTO getUserById(@PathVariable long id){
+    UserDTO getUserById(@PathVariable long id) {
         return new UserDTO(userService.getUser(id));
     }
 
     @PutMapping("/api/v1/users/{id}")
-    UserDTO updateUser(@PathVariable long id, @Valid @RequestBody UserUpdate userUpdate, @RequestHeader(name="Authorization", required = false) String authorizationHeader){
-        var loggedInUser = tokenService.verifyToken(authorizationHeader);
-        if(loggedInUser == null || loggedInUser.getId() != id) {
-            throw new AuthorizationException();
-        }
+    @PreAuthorize("#id == principal.id")
+    UserDTO updateUser(@PathVariable long id, @Valid @RequestBody UserUpdate userUpdate) {
         return new UserDTO(userService.updateUser(id, userUpdate));
     }
-    
+
+    @DeleteMapping("/api/v1/users/{id}")
+    @PreAuthorize("#id == principal.id")
+    GenericMessage deleteUser(@PathVariable long id) {
+        userService.deleteUser(id);
+        return new GenericMessage("User is deleted");
+    }
+
+    @PostMapping("/api/v1/users/password-reset")
+    GenericMessage passwordResetRequest(@Valid @RequestBody PasswordResetRequest passwordResetRequest) {
+        userService.handleResetRequest(passwordResetRequest);
+        return new GenericMessage("Check your email address to reset your password");
+    }
+
+    @PatchMapping("/api/v1/users/{token}/password")
+    GenericMessage setPassword(@PathVariable String token, @Valid @RequestBody PasswordUpdate passwordUpdate) {
+        userService.updatePassword(token, passwordUpdate);
+        return new GenericMessage("Password updated successfully");
+
+    }
+
 }

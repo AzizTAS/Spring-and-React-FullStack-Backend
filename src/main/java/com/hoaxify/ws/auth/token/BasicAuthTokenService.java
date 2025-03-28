@@ -2,8 +2,8 @@ package com.hoaxify.ws.auth.token;
 
 import java.util.Base64;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+
+import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -12,12 +12,18 @@ import com.hoaxify.ws.user.User;
 import com.hoaxify.ws.user.UserService;
 
 @Service
+@ConditionalOnProperty(name = "hoaxify.token-type", havingValue = "basic")
 public class BasicAuthTokenService implements TokenService {
 
-    @Autowired
-    UserService userService;
+    
+    private final UserService userService;
 
-    PasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+    private final PasswordEncoder passwordEncoder;
+
+    public BasicAuthTokenService(UserService userService, PasswordEncoder passwordEncoder) {
+        this.userService = userService;
+        this.passwordEncoder = passwordEncoder;
+    }
 
     @Override
     public Token createToken(User user, Credentials creds) {
@@ -38,6 +44,10 @@ public class BasicAuthTokenService implements TokenService {
         if(inDB == null) return null;
         if(!passwordEncoder.matches(password, inDB.getPassword())) return null;
         return inDB;
+    }
+
+    @Override
+    public void logout(String authorizationHeader) {
     }
     
 }

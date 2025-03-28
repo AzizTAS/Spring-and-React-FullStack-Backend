@@ -18,8 +18,10 @@ import jakarta.mail.internet.MimeMessage;
 public class EmailService {
 
     JavaMailSenderImpl mailSender;
-    HoaxifyProperties hoaxifyProperties;
-    MessageSource messageSource;
+
+    private final HoaxifyProperties hoaxifyProperties;
+
+    private final MessageSource messageSource;
 
     public EmailService(HoaxifyProperties hoaxifyProperties, MessageSource messageSource) {
         this.hoaxifyProperties = hoaxifyProperties;
@@ -45,13 +47,11 @@ public class EmailService {
                     <h1>${title}</h1>
                     <a href="${url}">${clickHere}</a>
                 </body>
-
             </html>
             """;
 
     public void sendActivationEmail(String email, String activationToken) {
         var activationUrl = hoaxifyProperties.getClient().host() + "/activation/" + activationToken;
-        System.out.println("Activation URL: " + activationUrl);
         var title = messageSource.getMessage("hoaxify.mail.user.created.title", null, LocaleContextHolder.getLocale());
         var clickHere = messageSource.getMessage("hoaxify.mail.click.here", null, LocaleContextHolder.getLocale());
 
@@ -62,7 +62,26 @@ public class EmailService {
 
         MimeMessage mimeMessage = mailSender.createMimeMessage();
         MimeMessageHelper message = new MimeMessageHelper(mimeMessage, "UTF-8");
+        try {
+            message.setFrom(hoaxifyProperties.getEmail().from());
+            message.setTo(email);
+            message.setSubject(title);
+            message.setText(mailBody, true);
+        } catch (MessagingException e) {
+            e.printStackTrace();
+        }
 
+        this.mailSender.send(mimeMessage);
+    }
+
+    public void sendPasswordResetEmail(String email, String passwordResetToken) {
+        String passwordResetUrl = hoaxifyProperties.getClient().host() + "/password-reset/set?tk=" + passwordResetToken;
+        MimeMessage mimeMessage = mailSender.createMimeMessage();
+        MimeMessageHelper message = new MimeMessageHelper(mimeMessage, "UTF-8");
+        var title = "Reset your password";
+        var clickHere = messageSource.getMessage("hoaxify.mail.click.here", null, LocaleContextHolder.getLocale());
+        var mailBody = activationEmail.replace("${url}", passwordResetUrl).replace("${title}", title)
+                .replace("${clickHere}", clickHere);
         try {
             message.setFrom(hoaxifyProperties.getEmail().from());
             message.setTo(email);
