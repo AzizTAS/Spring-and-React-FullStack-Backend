@@ -1,18 +1,12 @@
 package com.hoaxify.ws.cart.dto;
 
-import jakarta.validation.constraints.Min;
-import jakarta.validation.constraints.NotNull;
-
 public class AddToCartRequest {
 
-    @NotNull(message = "{hoaxify.constraints.product.id.NotNull.message}")
     private Long productId;
+    private int quantity = 1;
 
-    @NotNull(message = "{hoaxify.constraints.quantity.NotNull.message}")
-    @Min(value = 1, message = "{hoaxify.constraints.quantity.Min.message}")
-    private Integer quantity;
+    public AddToCartRequest() {}
 
-    // Getters and Setters
     public Long getProductId() {
         return productId;
     }
@@ -21,12 +15,11 @@ public class AddToCartRequest {
         this.productId = productId;
     }
 
-    public Integer getQuantity() {
+    public int getQuantity() {
         return quantity;
     }
 
-    public void setQuantity(Integer quantity) {
+    public void setQuantity(int quantity) {
         this.quantity = quantity;
     }
-
 }
