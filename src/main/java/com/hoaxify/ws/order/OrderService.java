@@ -6,6 +6,7 @@ import java.time.LocalDateTime;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.hoaxify.ws.cart.Cart;
 import com.hoaxify.ws.cart.CartItem;
@@ -18,9 +19,8 @@ import com.hoaxify.ws.product.ProductService;
 import com.hoaxify.ws.user.User;
 import com.hoaxify.ws.user.UserService;
 
-import jakarta.transaction.Transactional;
-
 @Service
+@Transactional
 public class OrderService {
 
     private final OrderRepository orderRepository;
@@ -47,7 +47,6 @@ public class OrderService {
                 .orElseThrow(() -> new OrderNotFoundException(id));
     }
 
-    @Transactional
     public Order createOrder(CurrentUser currentUser, CreateOrderRequest request) {
         User user = userService.getUser(currentUser.getId());
         Cart cart = cartService.getOrCreateCart(currentUser);
@@ -56,7 +55,6 @@ public class OrderService {
             throw new RuntimeException("Cart is empty");
         }
 
-        // Check and decrease stock for all items
         for (CartItem cartItem : cart.getItems()) {
             productService.decreaseStock(cartItem.getProduct().getId(), cartItem.getQuantity());
         }
@@ -65,7 +63,6 @@ public class OrderService {
         order.setUser(user);
         order.setShippingAddress(request.getShippingAddress());
 
-        // Create order items from cart items
         BigDecimal totalAmount = BigDecimal.ZERO;
         for (CartItem cartItem : cart.getItems()) {
             OrderItem orderItem = new OrderItem();
@@ -87,13 +84,11 @@ public class OrderService {
 
         Order savedOrder = orderRepository.save(order);
 
-        // Clear cart after order creation
         cartService.clearCart(currentUser);
 
         return savedOrder;
     }
 
-    @Transactional
     public Order updateOrderStatus(long id, UpdateOrderStatusRequest request) {
         Order order = getOrder(id);
         order.setStatus(request.getStatus());
@@ -101,12 +96,9 @@ public class OrderService {
         return orderRepository.save(order);
     }
 
-    @Transactional
     public void deleteOrder(long id) {
         Order order = getOrder(id);
         orderItemRepository.deleteAll(order.getItems());
         orderRepository.delete(order);
     }
-
-
 }
