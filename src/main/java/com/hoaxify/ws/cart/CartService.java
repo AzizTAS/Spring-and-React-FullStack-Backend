@@ -26,10 +26,16 @@ public class CartService {
     }
 
     public Cart getOrCreateCart(CurrentUser currentUser) {
+        if (currentUser == null) {
+            throw new RuntimeException("User not authenticated");
+        }
         Cart cart = cartRepository.findByUserId(currentUser.getId());
         if (cart == null) {
             cart = new Cart();
             User user = userService.getUser(currentUser.getId());
+            if (user == null) {
+                throw new RuntimeException("User not found: " + currentUser.getId());
+            }
             cart.setUser(user);
             cart = cartRepository.save(cart);
         }
@@ -37,8 +43,19 @@ public class CartService {
     }
 
     public void addToCart(CurrentUser currentUser, Long productId, int quantity) {
+        if (productId == null) {
+            throw new RuntimeException("Product ID is required");
+        }
+        if (quantity <= 0) {
+            quantity = 1;
+        }
+        
         Cart cart = getOrCreateCart(currentUser);
         Product product = productService.getProduct(productId);
+        
+        if (product == null) {
+            throw new RuntimeException("Product not found: " + productId);
+        }
 
         CartItem cartItem = cartItemRepository.findByCartIdAndProductId(cart.getId(), productId);
         if (cartItem != null) {
@@ -48,7 +65,11 @@ public class CartService {
             cartItem.setCart(cart);
             cartItem.setProduct(product);
             cartItem.setQuantity(quantity);
-            cartItem.setPriceAtTime(product.getPrice());
+            if (product.getPrice() != null) {
+                cartItem.setPriceAtTime(product.getPrice());
+            } else {
+                cartItem.setPriceAtTime(java.math.BigDecimal.ZERO);
+            }
         }
         cartItemRepository.save(cartItem);
     }
