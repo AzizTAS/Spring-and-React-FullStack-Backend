@@ -1,22 +1,13 @@
 package com.hoaxify.ws.cart;
 
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
-
+import org.springframework.web.bind.annotation.*;
+import com.hoaxify.ws.configuration.CurrentUser;
 import com.hoaxify.ws.cart.dto.AddToCartRequest;
 import com.hoaxify.ws.cart.dto.CartDTO;
-import com.hoaxify.ws.configuration.CurrentUser;
-import com.hoaxify.ws.shared.GenericMessage;
-
-import jakarta.validation.Valid;
+import com.hoaxify.ws.cart.dto.UpdateQuantityRequest;
 
 @RestController
 @RequestMapping("/api/v1/cart")
@@ -29,41 +20,43 @@ public class CartController {
     }
 
     @GetMapping
-    @PreAuthorize("isAuthenticated()")
-    CartDTO getCart(@AuthenticationPrincipal CurrentUser currentUser) {
-        return new CartDTO(cartService.getOrCreateCart(currentUser));
+    @PreAuthorize("hasRole('USER') or hasRole('ADMIN')")
+    public ResponseEntity<CartDTO> getCart(@AuthenticationPrincipal CurrentUser currentUser) {
+        Cart cart = cartService.getOrCreateCart(currentUser);
+        return ResponseEntity.ok(CartDTO.fromEntity(cart));
     }
 
     @PostMapping("/add")
-    @PreAuthorize("isAuthenticated()")
-    GenericMessage addToCart(@AuthenticationPrincipal CurrentUser currentUser,
-            @Valid @RequestBody AddToCartRequest request) {
-        cartService.addToCart(currentUser, request.getProductId(), request.getQuantity());
-        return new GenericMessage("Product added to cart successfully");
-    }
-
-    @PutMapping("/items/{cartItemId}")
-    @PreAuthorize("isAuthenticated()")
-    GenericMessage updateCartItem(@AuthenticationPrincipal CurrentUser currentUser,
-            @PathVariable long cartItemId,
+    @PreAuthorize("hasRole('USER') or hasRole('ADMIN')")
+    public ResponseEntity<String> addToCart(@AuthenticationPrincipal CurrentUser currentUser,
             @RequestBody AddToCartRequest request) {
-        cartService.updateCartItemQuantity(currentUser, cartItemId, request.getQuantity());
-        return new GenericMessage("Cart item updated successfully");
+        cartService.addToCart(currentUser, request.getProductId(), request.getQuantity());
+        return ResponseEntity.ok("Added to cart");
     }
 
-    @DeleteMapping("/items/{cartItemId}")
-    @PreAuthorize("isAuthenticated()")
-    GenericMessage removeFromCart(@AuthenticationPrincipal CurrentUser currentUser,
-            @PathVariable long cartItemId) {
+    @DeleteMapping("/item/{cartItemId}")
+    @PreAuthorize("hasRole('USER') or hasRole('ADMIN')")
+    public ResponseEntity<String> removeFromCart(
+            @AuthenticationPrincipal CurrentUser currentUser,
+            @PathVariable Long cartItemId) {
         cartService.removeFromCart(currentUser, cartItemId);
-        return new GenericMessage("Item removed from cart successfully");
+        return ResponseEntity.ok("Removed from cart");
     }
 
-    @DeleteMapping
-    @PreAuthorize("isAuthenticated()")
-    GenericMessage clearCart(@AuthenticationPrincipal CurrentUser currentUser) {
+    @PutMapping("/item/{cartItemId}")
+    @PreAuthorize("hasRole('USER') or hasRole('ADMIN')")
+    public ResponseEntity<String> updateQuantity(
+            @AuthenticationPrincipal CurrentUser currentUser,
+            @PathVariable Long cartItemId,
+            @RequestBody UpdateQuantityRequest request) {
+        cartService.updateCartItemQuantity(currentUser, cartItemId, request.getQuantity());
+        return ResponseEntity.ok("Quantity updated");
+    }
+
+    @DeleteMapping("/clear")
+    @PreAuthorize("hasRole('USER') or hasRole('ADMIN')")
+    public ResponseEntity<String> clearCart(@AuthenticationPrincipal CurrentUser currentUser) {
         cartService.clearCart(currentUser);
-        return new GenericMessage("Cart cleared successfully");
+        return ResponseEntity.ok("Cart cleared");
     }
-
 }
