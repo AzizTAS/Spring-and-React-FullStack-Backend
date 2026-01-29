@@ -1,5 +1,7 @@
 package com.hoaxify.ws.cart;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -14,6 +16,7 @@ import com.hoaxify.ws.cart.dto.UpdateQuantityRequest;
 @RequestMapping("/api/v1/cart")
 public class CartController {
 
+    private static final Logger log = LoggerFactory.getLogger(CartController.class);
     private final CartService cartService;
 
     public CartController(CartService cartService) {
@@ -30,11 +33,23 @@ public class CartController {
     @PostMapping("/add")
     @PreAuthorize("hasRole('USER') or hasRole('ADMIN')")
     public ResponseEntity<String> addToCart(@AuthenticationPrincipal CurrentUser currentUser,
-            @RequestBody AddToCartRequest request) {
+            @RequestBody(required = false) AddToCartRequest request) {
         try {
+            log.info("=== ADD TO CART REQUEST ===");
+            log.info("CurrentUser: {}", currentUser != null ? currentUser.getId() : "null");
+            log.info("Request: {}", request != null ? "productId=" + request.getProductId() + ", quantity=" + request.getQuantity() : "null");
+            
+            if (request == null) {
+                return ResponseEntity.badRequest().body("Request body is null");
+            }
+            if (request.getProductId() == null) {
+                return ResponseEntity.badRequest().body("ProductId is null");
+            }
+            
             cartService.addToCart(currentUser, request.getProductId(), request.getQuantity());
             return ResponseEntity.ok("Added to cart");
         } catch (Exception e) {
+            log.error("Error adding to cart", e);
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
                 .body("Error: " + e.getClass().getName() + " - " + e.getMessage());
         }
