@@ -9,7 +9,8 @@ import jakarta.persistence.*;
 public class CartItem {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "cart_item_seq")
+    @SequenceGenerator(name = "cart_item_seq", sequenceName = "cart_items_id_seq", allocationSize = 1)
     private Long id;
 
     @ManyToOne(fetch = FetchType.LAZY)
