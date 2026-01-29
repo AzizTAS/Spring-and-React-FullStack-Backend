@@ -18,12 +18,15 @@ public class CurrentUser implements UserDetails {
 
     boolean enabled;
 
+    String role;
+
 
     public CurrentUser(User user){
         this.id = user.getId();
         this.username = user.getUsername();
         this.password = user.getPassword();
         this.enabled = user.isActive();
+        this.role = user.getRole();
     }
 
     public long getId() {
@@ -35,7 +38,7 @@ public class CurrentUser implements UserDetails {
     }
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return AuthorityUtils.createAuthorityList("ROLE_USER");
+        return AuthorityUtils.createAuthorityList("ROLE_" + (role != null ? role : "USER"));
     }
 
     @Override

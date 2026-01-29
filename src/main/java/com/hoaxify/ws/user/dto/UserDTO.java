@@ -8,12 +8,14 @@ public class UserDTO {
     String username;
     String email;
     String image;
+    String role;
 
     public UserDTO(User user) {
         setId(user.getId());
         setUsername(user.getUsername());
         setEmail(user.getEmail());
         setImage(user.getImage());
+        setRole(user.getRole());
     }
 
     public String getImage() {
@@ -46,5 +48,13 @@ public class UserDTO {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public String getRole() {
+        return role;
+    }
+
+    public void setRole(String role) {
+        this.role = role;
     }
 }
