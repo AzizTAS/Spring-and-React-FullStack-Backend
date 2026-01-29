@@ -19,6 +19,16 @@ public class CartController {
         this.cartService = cartService;
     }
 
+    @GetMapping("/ping")
+    public ResponseEntity<String> ping() {
+        return ResponseEntity.ok("pong");
+    }
+
+    @PostMapping("/test-post")
+    public ResponseEntity<String> testPost(@RequestBody AddToCartRequest request) {
+        return ResponseEntity.ok("Received: productId=" + request.getProductId() + ", qty=" + request.getQuantity());
+    }
+
     @GetMapping
     @PreAuthorize("hasRole('USER') or hasRole('ADMIN')")
     public ResponseEntity<CartDTO> getCart(@AuthenticationPrincipal CurrentUser currentUser) {
