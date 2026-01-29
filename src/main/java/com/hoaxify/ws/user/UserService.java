@@ -8,6 +8,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.mail.MailException;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 import com.hoaxify.ws.configuration.CurrentUser;
@@ -34,6 +35,9 @@ public class UserService {
 
     private final FileService fileService;
 
+    @Value("${hoaxify.email.skip-verification:false}")
+    private boolean skipEmailVerification;
+
     public UserService(UserRepository userRepository, PasswordEncoder passwordEncoder, EmailService emailService,
             FileService fileService) {
         this.userRepository = userRepository;
@@ -47,8 +51,17 @@ public class UserService {
         try {
             user.setPassword(passwordEncoder.encode(user.getPassword()));
             user.setActivationToken(UUID.randomUUID().toString());
+            
+            if (skipEmailVerification) {
+                user.setActive(true);
+                user.setActivationToken(null);
+            }
+            
             userRepository.saveAndFlush(user);
-            emailService.sendActivationEmail(user.getEmail(), user.getActivationToken());
+            
+            if (!skipEmailVerification) {
+                emailService.sendActivationEmail(user.getEmail(), user.getActivationToken());
+            }
         } catch (DataIntegrityViolationException ex) {
             throw new NotUniqueEmailException();
         } catch (MailException ex) {
