@@ -38,23 +38,21 @@ public class WsApplication {
     @Profile("prod")
     CommandLineRunner prodAdminCreator(UserRepository userRepository, PasswordEncoder passwordEncoder) {
         return (args) -> {
-            var adminInDB = userRepository.findByEmail("admin@aziztaspatisserie.com");
-            if (adminInDB != null) {
-                adminInDB.setRole("ADMIN");
-                adminInDB.setPassword(passwordEncoder.encode("Admin123!"));
-                userRepository.save(adminInDB);
-                System.out.println(">>> Admin updated: admin@aziztaspatisserie.com");
+            String adminEmail = "aziz@admin.com";
+            var existingAdmin = userRepository.findByEmail(adminEmail);
+            if (existingAdmin != null) {
+                System.out.println(">>> Admin already exists: " + adminEmail);
                 return;
             }
 
             User admin = new User();
-            admin.setUsername("admin");
-            admin.setEmail("admin@aziztaspatisserie.com");
-            admin.setPassword(passwordEncoder.encode("Admin123!"));
+            admin.setUsername("azizadmin");
+            admin.setEmail(adminEmail);
+            admin.setPassword(passwordEncoder.encode("Aziz123!"));
             admin.setActive(true);
             admin.setRole("ADMIN");
             userRepository.save(admin);
-            System.out.println(">>> Admin created: admin@aziztaspatisserie.com");
+            System.out.println(">>> NEW Admin created: " + adminEmail + " / Aziz123!");
         };
     }
 }
