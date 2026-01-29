@@ -47,21 +47,21 @@ public class ReviewController {
     }
 
     @PostMapping("/product/{productId}")
-    @PreAuthorize("authenticated")
+    @PreAuthorize("isAuthenticated()")
     ReviewDTO createReview(@PathVariable long productId, @AuthenticationPrincipal CurrentUser currentUser,
             @Valid @RequestBody ReviewCreate reviewCreate) {
         return new ReviewDTO(reviewService.createReview(productId, currentUser, reviewCreate));
     }
 
     @PutMapping("/{id}")
-    @PreAuthorize("authenticated")
+    @PreAuthorize("isAuthenticated()")
     ReviewDTO updateReview(@PathVariable long id, @AuthenticationPrincipal CurrentUser currentUser,
             @Valid @RequestBody ReviewUpdate reviewUpdate) {
         return new ReviewDTO(reviewService.updateReview(id, currentUser, reviewUpdate));
     }
 
     @DeleteMapping("/{id}")
-    @PreAuthorize("authenticated")
+    @PreAuthorize("isAuthenticated()")
     GenericMessage deleteReview(@PathVariable long id, @AuthenticationPrincipal CurrentUser currentUser) {
         reviewService.deleteReview(id, currentUser);
         return new GenericMessage("Review deleted successfully");

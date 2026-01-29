@@ -29,13 +29,13 @@ public class CartController {
     }
 
     @GetMapping
-    @PreAuthorize("authenticated")
+    @PreAuthorize("isAuthenticated()")
     CartDTO getCart(@AuthenticationPrincipal CurrentUser currentUser) {
         return new CartDTO(cartService.getOrCreateCart(currentUser));
     }
 
     @PostMapping("/add")
-    @PreAuthorize("authenticated")
+    @PreAuthorize("isAuthenticated()")
     GenericMessage addToCart(@AuthenticationPrincipal CurrentUser currentUser,
             @Valid @RequestBody AddToCartRequest request) {
         cartService.addToCart(currentUser, request.getProductId(), request.getQuantity());
@@ -43,7 +43,7 @@ public class CartController {
     }
 
     @PutMapping("/items/{cartItemId}")
-    @PreAuthorize("authenticated")
+    @PreAuthorize("isAuthenticated()")
     GenericMessage updateCartItem(@AuthenticationPrincipal CurrentUser currentUser,
             @PathVariable long cartItemId,
             @RequestBody AddToCartRequest request) {
@@ -52,7 +52,7 @@ public class CartController {
     }
 
     @DeleteMapping("/items/{cartItemId}")
-    @PreAuthorize("authenticated")
+    @PreAuthorize("isAuthenticated()")
     GenericMessage removeFromCart(@AuthenticationPrincipal CurrentUser currentUser,
             @PathVariable long cartItemId) {
         cartService.removeFromCart(currentUser, cartItemId);
@@ -60,7 +60,7 @@ public class CartController {
     }
 
     @DeleteMapping
-    @PreAuthorize("authenticated")
+    @PreAuthorize("isAuthenticated()")
     GenericMessage clearCart(@AuthenticationPrincipal CurrentUser currentUser) {
         cartService.clearCart(currentUser);
         return new GenericMessage("Cart cleared successfully");

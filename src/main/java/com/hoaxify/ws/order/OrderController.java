@@ -32,13 +32,13 @@ public class OrderController {
     }
 
     @GetMapping
-    @PreAuthorize("authenticated")
+    @PreAuthorize("isAuthenticated()")
     Page<OrderDTO> getUserOrders(@AuthenticationPrincipal CurrentUser currentUser, Pageable page) {
         return orderService.getUserOrders(currentUser, page).map(OrderDTO::new);
     }
 
     @GetMapping("/{id}")
-    @PreAuthorize("authenticated")
+    @PreAuthorize("isAuthenticated()")
     OrderDTO getOrder(@AuthenticationPrincipal CurrentUser currentUser, @PathVariable long id) {
         Order order = orderService.getOrder(id);
         if (order.getUser().getId() != currentUser.getId()) {
@@ -48,14 +48,14 @@ public class OrderController {
     }
 
     @PostMapping
-    @PreAuthorize("authenticated")
+    @PreAuthorize("isAuthenticated()")
     OrderDTO createOrder(@AuthenticationPrincipal CurrentUser currentUser,
             @Valid @RequestBody CreateOrderRequest request) {
         return new OrderDTO(orderService.createOrder(currentUser, request));
     }
 
     @PutMapping("/{id}/status")
-    @PreAuthorize("authenticated")
+    @PreAuthorize("isAuthenticated()")
     OrderDTO updateOrderStatus(@PathVariable long id,
             @Valid @RequestBody UpdateOrderStatusRequest request) {
         return new OrderDTO(orderService.updateOrderStatus(id, request));

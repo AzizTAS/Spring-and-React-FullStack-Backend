@@ -26,25 +26,25 @@ public class PaymentController {
     }
 
     @GetMapping("/{id}")
-    @PreAuthorize("authenticated")
+    @PreAuthorize("isAuthenticated()")
     PaymentDTO getPayment(@PathVariable long id) {
         return new PaymentDTO(paymentService.getPayment(id));
     }
 
     @GetMapping("/order/{orderId}")
-    @PreAuthorize("authenticated")
+    @PreAuthorize("isAuthenticated()")
     PaymentDTO getPaymentByOrderId(@PathVariable long orderId) {
         return new PaymentDTO(paymentService.getPaymentByOrderId(orderId));
     }
 
     @PostMapping("/order/{orderId}")
-    @PreAuthorize("authenticated")
+    @PreAuthorize("isAuthenticated()")
     PaymentDTO createPayment(@PathVariable long orderId, @Valid @RequestBody CreatePaymentRequest request) {
         return new PaymentDTO(paymentService.createPayment(orderId, request));
     }
 
     @PutMapping("/{id}/status")
-    @PreAuthorize("authenticated")
+    @PreAuthorize("isAuthenticated()")
     PaymentDTO updatePaymentStatus(@PathVariable long id, @Valid @RequestBody UpdatePaymentStatusRequest request) {
         return new PaymentDTO(paymentService.updatePaymentStatus(id, request));
     }
