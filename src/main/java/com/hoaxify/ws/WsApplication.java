@@ -1,4 +1,4 @@
-﻿package com.hoaxify.ws;
+package com.hoaxify.ws;
 
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
