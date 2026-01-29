@@ -30,6 +30,24 @@ public class CartController {
         return ResponseEntity.ok(CartDTO.fromEntity(cart));
     }
 
+    @GetMapping("/test-add/{productId}")
+    @PreAuthorize("hasRole('USER') or hasRole('ADMIN')")
+    public ResponseEntity<String> testAddToCart(@AuthenticationPrincipal CurrentUser currentUser,
+            @PathVariable Long productId) {
+        try {
+            log.info("=== TEST ADD TO CART ===");
+            log.info("CurrentUser ID: {}", currentUser != null ? currentUser.getId() : "null");
+            log.info("ProductId: {}", productId);
+            
+            cartService.addToCart(currentUser, productId, 1);
+            return ResponseEntity.ok("Added to cart via GET test");
+        } catch (Exception e) {
+            log.error("Error in test add to cart", e);
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
+                .body("Error: " + e.getClass().getName() + " - " + e.getMessage());
+        }
+    }
+
     @PostMapping("/add")
     @PreAuthorize("hasRole('USER') or hasRole('ADMIN')")
     public ResponseEntity<String> addToCart(@AuthenticationPrincipal CurrentUser currentUser,
@@ -38,14 +56,14 @@ public class CartController {
             log.info("=== ADD TO CART REQUEST ===");
             log.info("CurrentUser: {}", currentUser != null ? currentUser.getId() : "null");
             log.info("Request: {}", request != null ? "productId=" + request.getProductId() + ", quantity=" + request.getQuantity() : "null");
-            
+
             if (request == null) {
                 return ResponseEntity.badRequest().body("Request body is null");
             }
             if (request.getProductId() == null) {
                 return ResponseEntity.badRequest().body("ProductId is null");
             }
-            
+
             cartService.addToCart(currentUser, request.getProductId(), request.getQuantity());
             return ResponseEntity.ok("Added to cart");
         } catch (Exception e) {
