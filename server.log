@@ -1,0 +1,747 @@
+[INFO] Scanning for projects...
+[WARNING] 
+[WARNING] Some problems were encountered while building the effective model for com.hoaxify:ws:jar:0.0.1-SNAPSHOT
+[WARNING] 'dependencies.dependency.scope' for org.springframework.boot:spring-boot-configuration-processor:jar must be one of [provided, compile, runtime, test, system] but is 'annotationProcessor'. @ line 70, column 11
+[WARNING] 
+[WARNING] It is highly recommended to fix these problems because they threaten the stability of your build.
+[WARNING] 
+[WARNING] For this reason, future Maven versions might no longer support building such malformed projects.
+[WARNING] 
+[INFO] 
+[INFO] ---------------------------< com.hoaxify:ws >---------------------------
+[INFO] Building ws 0.0.1-SNAPSHOT
+[INFO]   from pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] >>> spring-boot:3.1.2:run (default-cli) > test-compile @ ws >>>
+[INFO] 
+[INFO] --- resources:3.3.1:resources (default-resources) @ ws ---
+[INFO] Copying 2 resources from src\main\resources to target\classes
+[INFO] Copying 4 resources from src\main\resources to target\classes
+[INFO] 
+[INFO] --- compiler:3.11.0:compile (default-compile) @ ws ---
+[INFO] Nothing to compile - all classes are up to date
+[INFO] 
+[INFO] --- resources:3.3.1:testResources (default-testResources) @ ws ---
+[INFO] Copying 1 resource from src\test\resources to target\test-classes
+[INFO] 
+[INFO] --- compiler:3.11.0:testCompile (default-testCompile) @ ws ---
+[INFO] Nothing to compile - all classes are up to date
+[INFO] 
+[INFO] <<< spring-boot:3.1.2:run (default-cli) < test-compile @ ws <<<
+[INFO] 
+[INFO] 
+[INFO] --- spring-boot:3.1.2:run (default-cli) @ ws ---
+[INFO] Attaching agents: []
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+ :: Spring Boot ::                (v3.1.2)
+
+2026-01-29T23:57:32.620+01:00  INFO 24752 --- [  restartedMain] com.hoaxify.ws.WsApplication             : Starting WsApplication using Java 17.0.12 with PID 24752 (D:\Spring-and-React-FullStack\ws\target\classes started by azizt in D:\Spring-and-React-FullStack\ws)
+2026-01-29T23:57:32.623+01:00  INFO 24752 --- [  restartedMain] com.hoaxify.ws.WsApplication             : The following 1 profile is active: "dev"
+2026-01-29T23:57:32.650+01:00  INFO 24752 --- [  restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2026-01-29T23:57:32.651+01:00  INFO 24752 --- [  restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2026-01-29T23:57:33.066+01:00  INFO 24752 --- [  restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-01-29T23:57:33.119+01:00  INFO 24752 --- [  restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 47 ms. Found 10 JPA repository interfaces.
+2026-01-29T23:57:33.554+01:00  INFO 24752 --- [  restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2026-01-29T23:57:33.562+01:00  INFO 24752 --- [  restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2026-01-29T23:57:33.563+01:00  INFO 24752 --- [  restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.11]
+2026-01-29T23:57:33.607+01:00  INFO 24752 --- [  restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2026-01-29T23:57:33.609+01:00  INFO 24752 --- [  restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 956 ms
+2026-01-29T23:57:33.631+01:00  INFO 24752 --- [  restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2026-01-29T23:57:33.789+01:00  INFO 24752 --- [  restartedMain] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection conn0: url=jdbc:h2:file:./dev.db user=SA
+2026-01-29T23:57:33.791+01:00  INFO 24752 --- [  restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2026-01-29T23:57:33.798+01:00  INFO 24752 --- [  restartedMain] o.s.b.a.h2.H2ConsoleAutoConfiguration    : H2 console available at '/h2-console'. Database available at 'jdbc:h2:file:./dev.db'
+2026-01-29T23:57:33.856+01:00  INFO 24752 --- [  restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2026-01-29T23:57:33.888+01:00  INFO 24752 --- [  restartedMain] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.2.6.Final
+2026-01-29T23:57:33.891+01:00  INFO 24752 --- [  restartedMain] org.hibernate.cfg.Environment            : HHH000406: Using bytecode reflection optimizer
+2026-01-29T23:57:33.973+01:00  INFO 24752 --- [  restartedMain] o.h.b.i.BytecodeProviderInitiator        : HHH000021: Bytecode provider name : bytebuddy
+2026-01-29T23:57:34.052+01:00  INFO 24752 --- [  restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-01-29T23:57:34.243+01:00  INFO 24752 --- [  restartedMain] o.h.b.i.BytecodeProviderInitiator        : HHH000021: Bytecode provider name : bytebuddy
+2026-01-29T23:57:34.751+01:00  INFO 24752 --- [  restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2026-01-29T23:57:34.786+01:00  INFO 24752 --- [  restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-01-29T23:57:34.958+01:00  WARN 24752 --- [  restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2026-01-29T23:57:35.133+01:00  INFO 24752 --- [  restartedMain] o.s.d.j.r.query.QueryEnhancerFactory     : Hibernate is in classpath; If applicable, HQL parser will be used.
+2026-01-29T23:57:35.734+01:00  INFO 24752 --- [  restartedMain] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@6fddaba0, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@7b1ec4a8, org.springframework.security.web.context.SecurityContextHolderFilter@425f915d, org.springframework.security.web.authentication.logout.LogoutFilter@4b0b0967, com.hoaxify.ws.configuration.TokenFilter@1adac931, org.springframework.security.web.authentication.www.BasicAuthenticationFilter@7c7d1556, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@5c721627, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@3a277836, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@1ee2ec89, org.springframework.security.web.access.ExceptionTranslationFilter@66a773e0, org.springframework.security.web.access.intercept.AuthorizationFilter@184ba617]
+2026-01-29T23:57:35.946+01:00  INFO 24752 --- [  restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2026-01-29T23:57:35.969+01:00  INFO 24752 --- [  restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+2026-01-29T23:57:35.977+01:00  INFO 24752 --- [  restartedMain] com.hoaxify.ws.WsApplication             : Started WsApplication in 3.578 seconds (process running for 3.856)
+2026-01-30T00:01:50.264+01:00  INFO 24752 --- [   File Watcher] rtingClassPathChangeChangedEventListener : Restarting due to 111 class path changes (0 additions, 109 deletions, 2 modifications)
+2026-01-30T00:01:50.280+01:00  INFO 24752 --- [       Thread-6] o.apache.catalina.core.StandardService   : Stopping service [Tomcat]
+2026-01-30T00:01:50.292+01:00  INFO 24752 --- [       Thread-6] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-01-30T00:01:50.298+01:00  INFO 24752 --- [       Thread-6] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2026-01-30T00:01:50.462+01:00  INFO 24752 --- [       Thread-6] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+ :: Spring Boot ::                (v3.1.2)
+
+2026-01-30T00:01:50.575+01:00  INFO 24752 --- [  restartedMain] com.hoaxify.ws.WsApplication             : Starting WsApplication using Java 17.0.12 with PID 24752 (D:\Spring-and-React-FullStack\ws\target\classes started by azizt in D:\Spring-and-React-FullStack\ws)
+2026-01-30T00:01:50.576+01:00  INFO 24752 --- [  restartedMain] com.hoaxify.ws.WsApplication             : The following 1 profile is active: "dev"
+2026-01-30T00:01:50.709+01:00  INFO 24752 --- [  restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-01-30T00:01:50.726+01:00  INFO 24752 --- [  restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 15 ms. Found 3 JPA repository interfaces.
+2026-01-30T00:01:50.807+01:00  INFO 24752 --- [  restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2026-01-30T00:01:50.809+01:00  INFO 24752 --- [  restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2026-01-30T00:01:50.810+01:00  INFO 24752 --- [  restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.11]
+2026-01-30T00:01:50.832+01:00  INFO 24752 --- [  restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2026-01-30T00:01:50.833+01:00  INFO 24752 --- [  restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 255 ms
+2026-01-30T00:01:50.852+01:00  INFO 24752 --- [  restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Starting...
+2026-01-30T00:01:50.888+01:00  INFO 24752 --- [  restartedMain] com.zaxxer.hikari.pool.HikariPool        : HikariPool-2 - Added connection conn10: url=jdbc:h2:file:./dev.db user=SA
+2026-01-30T00:01:50.889+01:00  INFO 24752 --- [  restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Start completed.
+2026-01-30T00:01:50.890+01:00  INFO 24752 --- [  restartedMain] o.s.b.a.h2.H2ConsoleAutoConfiguration    : H2 console available at '/h2-console'. Database available at 'jdbc:h2:file:./dev.db'
+2026-01-30T00:01:50.938+01:00  INFO 24752 --- [  restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2026-01-30T00:01:50.946+01:00  INFO 24752 --- [  restartedMain] o.h.b.i.BytecodeProviderInitiator        : HHH000021: Bytecode provider name : bytebuddy
+2026-01-30T00:01:50.947+01:00  INFO 24752 --- [  restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-01-30T00:01:50.990+01:00  INFO 24752 --- [  restartedMain] o.h.b.i.BytecodeProviderInitiator        : HHH000021: Bytecode provider name : bytebuddy
+2026-01-30T00:01:51.114+01:00  INFO 24752 --- [  restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2026-01-30T00:01:51.125+01:00  INFO 24752 --- [  restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-01-30T00:01:51.131+01:00  WARN 24752 --- [  restartedMain] ConfigServletWebServerApplicationContext : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'devUserCreator' defined in com.hoaxify.ws.WsApplication: Unsatisfied dependency expressed through method 'devUserCreator' parameter 0: No qualifying bean of type 'com.hoaxify.ws.user.UserRepository' available: expected at least 1 bean which qualifies as autowire candidate. Dependency annotations: {}
+2026-01-30T00:01:51.132+01:00  INFO 24752 --- [  restartedMain] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-01-30T00:01:51.134+01:00  INFO 24752 --- [  restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Shutdown initiated...
+2026-01-30T00:01:51.336+01:00  INFO 24752 --- [  restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Shutdown completed.
+2026-01-30T00:01:51.338+01:00  INFO 24752 --- [  restartedMain] o.apache.catalina.core.StandardService   : Stopping service [Tomcat]
+2026-01-30T00:01:51.342+01:00  INFO 24752 --- [  restartedMain] .s.b.a.l.ConditionEvaluationReportLogger : 
+
+Error starting ApplicationContext. To display the condition evaluation report re-run your application with 'debug' enabled.
+2026-01-30T00:01:51.359+01:00 ERROR 24752 --- [  restartedMain] o.s.b.d.LoggingFailureAnalysisReporter   : 
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+Parameter 0 of method devUserCreator in com.hoaxify.ws.WsApplication required a bean of type 'com.hoaxify.ws.user.UserRepository' that could not be found.
+
+
+Action:
+
+Consider defining a bean of type 'com.hoaxify.ws.user.UserRepository' in your configuration.
+
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+ :: Spring Boot ::                (v3.1.2)
+
+2026-01-30T00:01:52.824+01:00  INFO 24752 --- [  restartedMain] com.hoaxify.ws.WsApplication             : Starting WsApplication using Java 17.0.12 with PID 24752 (D:\Spring-and-React-FullStack\ws\target\classes started by azizt in D:\Spring-and-React-FullStack\ws)
+2026-01-30T00:01:52.825+01:00  INFO 24752 --- [  restartedMain] com.hoaxify.ws.WsApplication             : The following 1 profile is active: "dev"
+2026-01-30T00:01:52.949+01:00  INFO 24752 --- [  restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-01-30T00:01:52.970+01:00  INFO 24752 --- [  restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 19 ms. Found 10 JPA repository interfaces.
+2026-01-30T00:01:53.046+01:00  INFO 24752 --- [  restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2026-01-30T00:01:53.047+01:00  INFO 24752 --- [  restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2026-01-30T00:01:53.048+01:00  INFO 24752 --- [  restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.11]
+2026-01-30T00:01:53.060+01:00  INFO 24752 --- [  restartedMain] o.a.c.c.C.[Tomcat-1].[localhost].[/]     : Initializing Spring embedded WebApplicationContext
+2026-01-30T00:01:53.061+01:00  INFO 24752 --- [  restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 235 ms
+2026-01-30T00:01:53.073+01:00  INFO 24752 --- [  restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-3 - Starting...
+2026-01-30T00:01:53.091+01:00  INFO 24752 --- [  restartedMain] com.zaxxer.hikari.pool.HikariPool        : HikariPool-3 - Added connection conn20: url=jdbc:h2:file:./dev.db user=SA
+2026-01-30T00:01:53.092+01:00  INFO 24752 --- [  restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-3 - Start completed.
+2026-01-30T00:01:53.093+01:00  INFO 24752 --- [  restartedMain] o.s.b.a.h2.H2ConsoleAutoConfiguration    : H2 console available at '/h2-console'. Database available at 'jdbc:h2:file:./dev.db'
+2026-01-30T00:01:53.114+01:00  INFO 24752 --- [  restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2026-01-30T00:01:53.118+01:00  INFO 24752 --- [  restartedMain] o.h.b.i.BytecodeProviderInitiator        : HHH000021: Bytecode provider name : bytebuddy
+2026-01-30T00:01:53.119+01:00  INFO 24752 --- [  restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-01-30T00:01:53.140+01:00  INFO 24752 --- [  restartedMain] o.h.b.i.BytecodeProviderInitiator        : HHH000021: Bytecode provider name : bytebuddy
+2026-01-30T00:01:53.192+01:00  INFO 24752 --- [  restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2026-01-30T00:01:53.199+01:00  INFO 24752 --- [  restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-01-30T00:01:53.239+01:00  WARN 24752 --- [  restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2026-01-30T00:01:53.479+01:00  INFO 24752 --- [  restartedMain] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@1de020e, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@33685eb0, org.springframework.security.web.context.SecurityContextHolderFilter@29d00599, org.springframework.security.web.authentication.logout.LogoutFilter@5d945d04, com.hoaxify.ws.configuration.TokenFilter@58efacc, org.springframework.security.web.authentication.www.BasicAuthenticationFilter@7edd1cac, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@2efe86d5, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@1152e4e9, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@19f8cb9c, org.springframework.security.web.access.ExceptionTranslationFilter@68a1bae9, org.springframework.security.web.access.intercept.AuthorizationFilter@1f579f8]
+2026-01-30T00:01:53.524+01:00  WARN 24752 --- [  restartedMain] ConfigServletWebServerApplicationContext : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'devUserCreator' defined in com.hoaxify.ws.WsApplication: Failed to instantiate [org.springframework.boot.CommandLineRunner]: Illegal arguments to factory method 'devUserCreator'; args: org.springframework.data.jpa.repository.support.SimpleJpaRepository@53a6d352,org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder@7e46a291
+2026-01-30T00:01:53.526+01:00  INFO 24752 --- [  restartedMain] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-01-30T00:01:53.527+01:00  INFO 24752 --- [  restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-3 - Shutdown initiated...
+2026-01-30T00:01:53.636+01:00  INFO 24752 --- [  restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-3 - Shutdown completed.
+2026-01-30T00:01:53.637+01:00  INFO 24752 --- [  restartedMain] o.apache.catalina.core.StandardService   : Stopping service [Tomcat]
+2026-01-30T00:01:53.641+01:00  INFO 24752 --- [  restartedMain] .s.b.a.l.ConditionEvaluationReportLogger : 
+
+Error starting ApplicationContext. To display the condition evaluation report re-run your application with 'debug' enabled.
+2026-01-30T00:01:53.644+01:00 ERROR 24752 --- [  restartedMain] o.s.boot.SpringApplication               : Application run failed
+
+org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'devUserCreator' defined in com.hoaxify.ws.WsApplication: Failed to instantiate [org.springframework.boot.CommandLineRunner]: Illegal arguments to factory method 'devUserCreator'; args: org.springframework.data.jpa.repository.support.SimpleJpaRepository@53a6d352,org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder@7e46a291
+	at org.springframework.beans.factory.support.ConstructorResolver.instantiate(ConstructorResolver.java:659) ~[spring-beans-6.0.11.jar:6.0.11]
+	at org.springframework.beans.factory.support.ConstructorResolver.instantiateUsingFactoryMethod(ConstructorResolver.java:647) ~[spring-beans-6.0.11.jar:6.0.11]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.instantiateUsingFactoryMethod(AbstractAutowireCapableBeanFactory.java:1332) ~[spring-beans-6.0.11.jar:6.0.11]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1162) ~[spring-beans-6.0.11.jar:6.0.11]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:560) ~[spring-beans-6.0.11.jar:6.0.11]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:520) ~[spring-beans-6.0.11.jar:6.0.11]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:326) ~[spring-beans-6.0.11.jar:6.0.11]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234) ~[spring-beans-6.0.11.jar:6.0.11]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:324) ~[spring-beans-6.0.11.jar:6.0.11]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:200) ~[spring-beans-6.0.11.jar:6.0.11]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingletons(DefaultListableBeanFactory.java:973) ~[spring-beans-6.0.11.jar:6.0.11]
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:942) ~[spring-context-6.0.11.jar:6.0.11]
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:608) ~[spring-context-6.0.11.jar:6.0.11]
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:146) ~[spring-boot-3.1.2.jar:3.1.2]
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:734) ~[spring-boot-3.1.2.jar:3.1.2]
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:436) ~[spring-boot-3.1.2.jar:3.1.2]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:312) ~[spring-boot-3.1.2.jar:3.1.2]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1306) ~[spring-boot-3.1.2.jar:3.1.2]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1295) ~[spring-boot-3.1.2.jar:3.1.2]
+	at com.hoaxify.ws.WsApplication.main(WsApplication.java:17) ~[classes/:na]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:na]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77) ~[na:na]
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:na]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568) ~[na:na]
+	at org.springframework.boot.devtools.restart.RestartLauncher.run(RestartLauncher.java:50) ~[spring-boot-devtools-3.1.2.jar:3.1.2]
+Caused by: org.springframework.beans.BeanInstantiationException: Failed to instantiate [org.springframework.boot.CommandLineRunner]: Illegal arguments to factory method 'devUserCreator'; args: org.springframework.data.jpa.repository.support.SimpleJpaRepository@53a6d352,org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder@7e46a291
+	at org.springframework.beans.factory.support.SimpleInstantiationStrategy.instantiate(SimpleInstantiationStrategy.java:157) ~[spring-beans-6.0.11.jar:6.0.11]
+	at org.springframework.beans.factory.support.ConstructorResolver.instantiate(ConstructorResolver.java:655) ~[spring-beans-6.0.11.jar:6.0.11]
+	... 24 common frames omitted
+Caused by: java.lang.IllegalArgumentException: object is not an instance of declaring class
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:na]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77) ~[na:na]
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:na]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568) ~[na:na]
+	at org.springframework.beans.factory.support.SimpleInstantiationStrategy.instantiate(SimpleInstantiationStrategy.java:139) ~[spring-beans-6.0.11.jar:6.0.11]
+	... 25 common frames omitted
+
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+ :: Spring Boot ::                (v3.1.2)
+
+2026-01-30T00:01:56.528+01:00  INFO 24752 --- [  restartedMain] com.hoaxify.ws.WsApplication             : Starting WsApplication using Java 17.0.12 with PID 24752 (D:\Spring-and-React-FullStack\ws\target\classes started by azizt in D:\Spring-and-React-FullStack\ws)
+2026-01-30T00:01:56.529+01:00  INFO 24752 --- [  restartedMain] com.hoaxify.ws.WsApplication             : The following 1 profile is active: "dev"
+2026-01-30T00:01:56.642+01:00  INFO 24752 --- [  restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-01-30T00:01:56.644+01:00  INFO 24752 --- [  restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 0 ms. Found 0 JPA repository interfaces.
+2026-01-30T00:01:56.702+01:00  INFO 24752 --- [  restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2026-01-30T00:01:56.704+01:00  INFO 24752 --- [  restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2026-01-30T00:01:56.705+01:00  INFO 24752 --- [  restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.11]
+2026-01-30T00:01:56.719+01:00  INFO 24752 --- [  restartedMain] o.a.c.c.C.[Tomcat-2].[localhost].[/]     : Initializing Spring embedded WebApplicationContext
+2026-01-30T00:01:56.720+01:00  INFO 24752 --- [  restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 189 ms
+2026-01-30T00:01:56.731+01:00  INFO 24752 --- [  restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-4 - Starting...
+2026-01-30T00:01:56.757+01:00  INFO 24752 --- [  restartedMain] com.zaxxer.hikari.pool.HikariPool        : HikariPool-4 - Added connection conn30: url=jdbc:h2:file:./dev.db user=SA
+2026-01-30T00:01:56.759+01:00  INFO 24752 --- [  restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-4 - Start completed.
+2026-01-30T00:01:56.760+01:00  INFO 24752 --- [  restartedMain] o.s.b.a.h2.H2ConsoleAutoConfiguration    : H2 console available at '/h2-console'. Database available at 'jdbc:h2:file:./dev.db'
+2026-01-30T00:01:56.779+01:00  INFO 24752 --- [  restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2026-01-30T00:01:56.785+01:00  INFO 24752 --- [  restartedMain] o.h.b.i.BytecodeProviderInitiator        : HHH000021: Bytecode provider name : bytebuddy
+2026-01-30T00:01:56.786+01:00  INFO 24752 --- [  restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-01-30T00:01:56.805+01:00  INFO 24752 --- [  restartedMain] o.h.b.i.BytecodeProviderInitiator        : HHH000021: Bytecode provider name : bytebuddy
+2026-01-30T00:01:56.849+01:00  INFO 24752 --- [  restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2026-01-30T00:01:56.856+01:00  INFO 24752 --- [  restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-01-30T00:01:56.861+01:00  WARN 24752 --- [  restartedMain] ConfigServletWebServerApplicationContext : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'devUserCreator' defined in com.hoaxify.ws.WsApplication: Unsatisfied dependency expressed through method 'devUserCreator' parameter 0: No qualifying bean of type 'com.hoaxify.ws.user.UserRepository' available: expected at least 1 bean which qualifies as autowire candidate. Dependency annotations: {}
+2026-01-30T00:01:56.862+01:00  INFO 24752 --- [  restartedMain] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-01-30T00:01:56.863+01:00  INFO 24752 --- [  restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-4 - Shutdown initiated...
+2026-01-30T00:01:56.950+01:00  INFO 24752 --- [  restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-4 - Shutdown completed.
+2026-01-30T00:01:56.952+01:00  INFO 24752 --- [  restartedMain] o.apache.catalina.core.StandardService   : Stopping service [Tomcat]
+2026-01-30T00:01:56.956+01:00  INFO 24752 --- [  restartedMain] .s.b.a.l.ConditionEvaluationReportLogger : 
+
+Error starting ApplicationContext. To display the condition evaluation report re-run your application with 'debug' enabled.
+2026-01-30T00:01:56.960+01:00 ERROR 24752 --- [  restartedMain] o.s.b.d.LoggingFailureAnalysisReporter   : 
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+Parameter 0 of method devUserCreator in com.hoaxify.ws.WsApplication required a bean of type 'com.hoaxify.ws.user.UserRepository' that could not be found.
+
+
+Action:
+
+Consider defining a bean of type 'com.hoaxify.ws.user.UserRepository' in your configuration.
+
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+ :: Spring Boot ::                (v3.1.2)
+
+2026-01-30T00:01:58.428+01:00  INFO 24752 --- [  restartedMain] com.hoaxify.ws.WsApplication             : Starting WsApplication using Java 17.0.12 with PID 24752 (D:\Spring-and-React-FullStack\ws\target\classes started by azizt in D:\Spring-and-React-FullStack\ws)
+2026-01-30T00:01:58.429+01:00  INFO 24752 --- [  restartedMain] com.hoaxify.ws.WsApplication             : The following 1 profile is active: "dev"
+2026-01-30T00:01:58.558+01:00  INFO 24752 --- [  restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-01-30T00:01:58.580+01:00  INFO 24752 --- [  restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 21 ms. Found 10 JPA repository interfaces.
+2026-01-30T00:01:58.656+01:00  INFO 24752 --- [  restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2026-01-30T00:01:58.658+01:00  INFO 24752 --- [  restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2026-01-30T00:01:58.659+01:00  INFO 24752 --- [  restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.11]
+2026-01-30T00:01:58.673+01:00  INFO 24752 --- [  restartedMain] o.a.c.c.C.[Tomcat-3].[localhost].[/]     : Initializing Spring embedded WebApplicationContext
+2026-01-30T00:01:58.674+01:00  INFO 24752 --- [  restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 244 ms
+2026-01-30T00:01:58.686+01:00  INFO 24752 --- [  restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-5 - Starting...
+2026-01-30T00:01:58.704+01:00  INFO 24752 --- [  restartedMain] com.zaxxer.hikari.pool.HikariPool        : HikariPool-5 - Added connection conn31: url=jdbc:h2:file:./dev.db user=SA
+2026-01-30T00:01:58.705+01:00  INFO 24752 --- [  restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-5 - Start completed.
+2026-01-30T00:01:58.706+01:00  INFO 24752 --- [  restartedMain] o.s.b.a.h2.H2ConsoleAutoConfiguration    : H2 console available at '/h2-console'. Database available at 'jdbc:h2:file:./dev.db'
+2026-01-30T00:01:58.727+01:00  INFO 24752 --- [  restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2026-01-30T00:01:58.731+01:00  INFO 24752 --- [  restartedMain] o.h.b.i.BytecodeProviderInitiator        : HHH000021: Bytecode provider name : bytebuddy
+2026-01-30T00:01:58.732+01:00  INFO 24752 --- [  restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-01-30T00:01:58.753+01:00  INFO 24752 --- [  restartedMain] o.h.b.i.BytecodeProviderInitiator        : HHH000021: Bytecode provider name : bytebuddy
+2026-01-30T00:01:58.806+01:00  INFO 24752 --- [  restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2026-01-30T00:01:58.817+01:00  INFO 24752 --- [  restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-01-30T00:01:58.856+01:00  WARN 24752 --- [  restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2026-01-30T00:01:59.122+01:00  INFO 24752 --- [  restartedMain] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@16f2a407, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@66c4a21f, org.springframework.security.web.context.SecurityContextHolderFilter@7b228b44, org.springframework.security.web.authentication.logout.LogoutFilter@5b0abc32, com.hoaxify.ws.configuration.TokenFilter@1bf9d01f, org.springframework.security.web.authentication.www.BasicAuthenticationFilter@1817601b, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@68ee85c2, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@1d63b544, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@5cd05e26, org.springframework.security.web.access.ExceptionTranslationFilter@3a9268ae, org.springframework.security.web.access.intercept.AuthorizationFilter@479fb62f]
+2026-01-30T00:01:59.177+01:00  WARN 24752 --- [  restartedMain] ConfigServletWebServerApplicationContext : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'devUserCreator' defined in com.hoaxify.ws.WsApplication: Failed to instantiate [org.springframework.boot.CommandLineRunner]: Illegal arguments to factory method 'devUserCreator'; args: org.springframework.data.jpa.repository.support.SimpleJpaRepository@30d242e3,org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder@32afed51
+2026-01-30T00:01:59.179+01:00  INFO 24752 --- [  restartedMain] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-01-30T00:01:59.180+01:00  INFO 24752 --- [  restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-5 - Shutdown initiated...
+2026-01-30T00:01:59.242+01:00  INFO 24752 --- [  restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-5 - Shutdown completed.
+2026-01-30T00:01:59.243+01:00  INFO 24752 --- [  restartedMain] o.apache.catalina.core.StandardService   : Stopping service [Tomcat]
+2026-01-30T00:01:59.246+01:00  INFO 24752 --- [  restartedMain] .s.b.a.l.ConditionEvaluationReportLogger : 
+
+Error starting ApplicationContext. To display the condition evaluation report re-run your application with 'debug' enabled.
+2026-01-30T00:01:59.249+01:00 ERROR 24752 --- [  restartedMain] o.s.boot.SpringApplication               : Application run failed
+
+org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'devUserCreator' defined in com.hoaxify.ws.WsApplication: Failed to instantiate [org.springframework.boot.CommandLineRunner]: Illegal arguments to factory method 'devUserCreator'; args: org.springframework.data.jpa.repository.support.SimpleJpaRepository@30d242e3,org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder@32afed51
+	at org.springframework.beans.factory.support.ConstructorResolver.instantiate(ConstructorResolver.java:659) ~[spring-beans-6.0.11.jar:6.0.11]
+	at org.springframework.beans.factory.support.ConstructorResolver.instantiateUsingFactoryMethod(ConstructorResolver.java:647) ~[spring-beans-6.0.11.jar:6.0.11]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.instantiateUsingFactoryMethod(AbstractAutowireCapableBeanFactory.java:1332) ~[spring-beans-6.0.11.jar:6.0.11]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1162) ~[spring-beans-6.0.11.jar:6.0.11]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:560) ~[spring-beans-6.0.11.jar:6.0.11]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:520) ~[spring-beans-6.0.11.jar:6.0.11]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:326) ~[spring-beans-6.0.11.jar:6.0.11]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234) ~[spring-beans-6.0.11.jar:6.0.11]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:324) ~[spring-beans-6.0.11.jar:6.0.11]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:200) ~[spring-beans-6.0.11.jar:6.0.11]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingletons(DefaultListableBeanFactory.java:973) ~[spring-beans-6.0.11.jar:6.0.11]
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:942) ~[spring-context-6.0.11.jar:6.0.11]
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:608) ~[spring-context-6.0.11.jar:6.0.11]
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:146) ~[spring-boot-3.1.2.jar:3.1.2]
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:734) ~[spring-boot-3.1.2.jar:3.1.2]
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:436) ~[spring-boot-3.1.2.jar:3.1.2]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:312) ~[spring-boot-3.1.2.jar:3.1.2]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1306) ~[spring-boot-3.1.2.jar:3.1.2]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1295) ~[spring-boot-3.1.2.jar:3.1.2]
+	at com.hoaxify.ws.WsApplication.main(WsApplication.java:17) ~[classes/:na]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:na]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77) ~[na:na]
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:na]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568) ~[na:na]
+	at org.springframework.boot.devtools.restart.RestartLauncher.run(RestartLauncher.java:50) ~[spring-boot-devtools-3.1.2.jar:3.1.2]
+Caused by: org.springframework.beans.BeanInstantiationException: Failed to instantiate [org.springframework.boot.CommandLineRunner]: Illegal arguments to factory method 'devUserCreator'; args: org.springframework.data.jpa.repository.support.SimpleJpaRepository@30d242e3,org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder@32afed51
+	at org.springframework.beans.factory.support.SimpleInstantiationStrategy.instantiate(SimpleInstantiationStrategy.java:157) ~[spring-beans-6.0.11.jar:6.0.11]
+	at org.springframework.beans.factory.support.ConstructorResolver.instantiate(ConstructorResolver.java:655) ~[spring-beans-6.0.11.jar:6.0.11]
+	... 24 common frames omitted
+Caused by: java.lang.IllegalArgumentException: object is not an instance of declaring class
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:na]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77) ~[na:na]
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:na]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568) ~[na:na]
+	at org.springframework.beans.factory.support.SimpleInstantiationStrategy.instantiate(SimpleInstantiationStrategy.java:139) ~[spring-beans-6.0.11.jar:6.0.11]
+	... 25 common frames omitted
+
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+ :: Spring Boot ::                (v3.1.2)
+
+2026-01-30T00:02:01.723+01:00  INFO 24752 --- [  restartedMain] com.hoaxify.ws.WsApplication             : Starting WsApplication using Java 17.0.12 with PID 24752 (D:\Spring-and-React-FullStack\ws\target\classes started by azizt in D:\Spring-and-React-FullStack\ws)
+2026-01-30T00:02:01.724+01:00  INFO 24752 --- [  restartedMain] com.hoaxify.ws.WsApplication             : The following 1 profile is active: "dev"
+2026-01-30T00:02:01.849+01:00  INFO 24752 --- [  restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-01-30T00:02:01.851+01:00  INFO 24752 --- [  restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 1 ms. Found 0 JPA repository interfaces.
+2026-01-30T00:02:01.945+01:00  INFO 24752 --- [  restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2026-01-30T00:02:01.947+01:00  INFO 24752 --- [  restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2026-01-30T00:02:01.948+01:00  INFO 24752 --- [  restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.11]
+2026-01-30T00:02:01.967+01:00  INFO 24752 --- [  restartedMain] o.a.c.c.C.[Tomcat-4].[localhost].[/]     : Initializing Spring embedded WebApplicationContext
+2026-01-30T00:02:01.968+01:00  INFO 24752 --- [  restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 241 ms
+2026-01-30T00:02:01.984+01:00  INFO 24752 --- [  restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-6 - Starting...
+2026-01-30T00:02:02.022+01:00  INFO 24752 --- [  restartedMain] com.zaxxer.hikari.pool.HikariPool        : HikariPool-6 - Added connection conn41: url=jdbc:h2:file:./dev.db user=SA
+2026-01-30T00:02:02.023+01:00  INFO 24752 --- [  restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-6 - Start completed.
+2026-01-30T00:02:02.024+01:00  INFO 24752 --- [  restartedMain] o.s.b.a.h2.H2ConsoleAutoConfiguration    : H2 console available at '/h2-console'. Database available at 'jdbc:h2:file:./dev.db'
+2026-01-30T00:02:02.048+01:00  INFO 24752 --- [  restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2026-01-30T00:02:02.055+01:00  INFO 24752 --- [  restartedMain] o.h.b.i.BytecodeProviderInitiator        : HHH000021: Bytecode provider name : bytebuddy
+2026-01-30T00:02:02.057+01:00  INFO 24752 --- [  restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-01-30T00:02:02.061+01:00  INFO 24752 --- [  restartedMain] o.h.b.i.BytecodeProviderInitiator        : HHH000021: Bytecode provider name : bytebuddy
+2026-01-30T00:02:02.069+01:00  INFO 24752 --- [  restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2026-01-30T00:02:02.070+01:00  INFO 24752 --- [  restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-01-30T00:02:02.078+01:00  WARN 24752 --- [  restartedMain] ConfigServletWebServerApplicationContext : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'devUserCreator' defined in com.hoaxify.ws.WsApplication: Unsatisfied dependency expressed through method 'devUserCreator' parameter 0: No qualifying bean of type 'com.hoaxify.ws.user.UserRepository' available: expected at least 1 bean which qualifies as autowire candidate. Dependency annotations: {}
+2026-01-30T00:02:02.079+01:00  INFO 24752 --- [  restartedMain] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-01-30T00:02:02.080+01:00  INFO 24752 --- [  restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-6 - Shutdown initiated...
+2026-01-30T00:02:02.124+01:00  INFO 24752 --- [  restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-6 - Shutdown completed.
+2026-01-30T00:02:02.126+01:00  INFO 24752 --- [  restartedMain] o.apache.catalina.core.StandardService   : Stopping service [Tomcat]
+2026-01-30T00:02:02.135+01:00  INFO 24752 --- [  restartedMain] .s.b.a.l.ConditionEvaluationReportLogger : 
+
+Error starting ApplicationContext. To display the condition evaluation report re-run your application with 'debug' enabled.
+2026-01-30T00:02:02.143+01:00 ERROR 24752 --- [  restartedMain] o.s.b.d.LoggingFailureAnalysisReporter   : 
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+Parameter 0 of method devUserCreator in com.hoaxify.ws.WsApplication required a bean of type 'com.hoaxify.ws.user.UserRepository' that could not be found.
+
+
+Action:
+
+Consider defining a bean of type 'com.hoaxify.ws.user.UserRepository' in your configuration.
+
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+ :: Spring Boot ::                (v3.1.2)
+
+2026-01-30T00:02:04.027+01:00  INFO 24752 --- [  restartedMain] com.hoaxify.ws.WsApplication             : Starting WsApplication using Java 17.0.12 with PID 24752 (D:\Spring-and-React-FullStack\ws\target\classes started by azizt in D:\Spring-and-React-FullStack\ws)
+2026-01-30T00:02:04.028+01:00  INFO 24752 --- [  restartedMain] com.hoaxify.ws.WsApplication             : The following 1 profile is active: "dev"
+2026-01-30T00:02:04.149+01:00  INFO 24752 --- [  restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-01-30T00:02:04.170+01:00  INFO 24752 --- [  restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 19 ms. Found 10 JPA repository interfaces.
+2026-01-30T00:02:04.247+01:00  INFO 24752 --- [  restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2026-01-30T00:02:04.249+01:00  INFO 24752 --- [  restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2026-01-30T00:02:04.249+01:00  INFO 24752 --- [  restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.11]
+2026-01-30T00:02:04.262+01:00  INFO 24752 --- [  restartedMain] o.a.c.c.C.[Tomcat-5].[localhost].[/]     : Initializing Spring embedded WebApplicationContext
+2026-01-30T00:02:04.262+01:00  INFO 24752 --- [  restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 232 ms
+2026-01-30T00:02:04.276+01:00  INFO 24752 --- [  restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-7 - Starting...
+2026-01-30T00:02:04.292+01:00  INFO 24752 --- [  restartedMain] com.zaxxer.hikari.pool.HikariPool        : HikariPool-7 - Added connection conn42: url=jdbc:h2:file:./dev.db user=SA
+2026-01-30T00:02:04.293+01:00  INFO 24752 --- [  restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-7 - Start completed.
+2026-01-30T00:02:04.294+01:00  INFO 24752 --- [  restartedMain] o.s.b.a.h2.H2ConsoleAutoConfiguration    : H2 console available at '/h2-console'. Database available at 'jdbc:h2:file:./dev.db'
+2026-01-30T00:02:04.315+01:00  INFO 24752 --- [  restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2026-01-30T00:02:04.319+01:00  INFO 24752 --- [  restartedMain] o.h.b.i.BytecodeProviderInitiator        : HHH000021: Bytecode provider name : bytebuddy
+2026-01-30T00:02:04.320+01:00  INFO 24752 --- [  restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-01-30T00:02:04.339+01:00  INFO 24752 --- [  restartedMain] o.h.b.i.BytecodeProviderInitiator        : HHH000021: Bytecode provider name : bytebuddy
+2026-01-30T00:02:04.393+01:00  INFO 24752 --- [  restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2026-01-30T00:02:04.400+01:00  INFO 24752 --- [  restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-01-30T00:02:04.442+01:00  WARN 24752 --- [  restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2026-01-30T00:02:04.694+01:00  INFO 24752 --- [  restartedMain] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@36e3b179, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@54907e8e, org.springframework.security.web.context.SecurityContextHolderFilter@412f744a, org.springframework.security.web.authentication.logout.LogoutFilter@50a55cda, com.hoaxify.ws.configuration.TokenFilter@38e30f85, org.springframework.security.web.authentication.www.BasicAuthenticationFilter@4c5a67a4, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@563e55a8, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@3d1f0752, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@7621ab64, org.springframework.security.web.access.ExceptionTranslationFilter@b0b9a35, org.springframework.security.web.access.intercept.AuthorizationFilter@31727c24]
+2026-01-30T00:02:04.731+01:00  WARN 24752 --- [  restartedMain] ConfigServletWebServerApplicationContext : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'devUserCreator' defined in com.hoaxify.ws.WsApplication: Failed to instantiate [org.springframework.boot.CommandLineRunner]: Illegal arguments to factory method 'devUserCreator'; args: org.springframework.data.jpa.repository.support.SimpleJpaRepository@253c11d5,org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder@17b58823
+2026-01-30T00:02:04.733+01:00  INFO 24752 --- [  restartedMain] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-01-30T00:02:04.734+01:00  INFO 24752 --- [  restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-7 - Shutdown initiated...
+2026-01-30T00:02:04.881+01:00  INFO 24752 --- [  restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-7 - Shutdown completed.
+2026-01-30T00:02:04.883+01:00  INFO 24752 --- [  restartedMain] o.apache.catalina.core.StandardService   : Stopping service [Tomcat]
+2026-01-30T00:02:04.886+01:00  INFO 24752 --- [  restartedMain] .s.b.a.l.ConditionEvaluationReportLogger : 
+
+Error starting ApplicationContext. To display the condition evaluation report re-run your application with 'debug' enabled.
+2026-01-30T00:02:04.888+01:00 ERROR 24752 --- [  restartedMain] o.s.boot.SpringApplication               : Application run failed
+
+org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'devUserCreator' defined in com.hoaxify.ws.WsApplication: Failed to instantiate [org.springframework.boot.CommandLineRunner]: Illegal arguments to factory method 'devUserCreator'; args: org.springframework.data.jpa.repository.support.SimpleJpaRepository@253c11d5,org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder@17b58823
+	at org.springframework.beans.factory.support.ConstructorResolver.instantiate(ConstructorResolver.java:659) ~[spring-beans-6.0.11.jar:6.0.11]
+	at org.springframework.beans.factory.support.ConstructorResolver.instantiateUsingFactoryMethod(ConstructorResolver.java:647) ~[spring-beans-6.0.11.jar:6.0.11]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.instantiateUsingFactoryMethod(AbstractAutowireCapableBeanFactory.java:1332) ~[spring-beans-6.0.11.jar:6.0.11]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1162) ~[spring-beans-6.0.11.jar:6.0.11]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:560) ~[spring-beans-6.0.11.jar:6.0.11]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:520) ~[spring-beans-6.0.11.jar:6.0.11]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:326) ~[spring-beans-6.0.11.jar:6.0.11]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234) ~[spring-beans-6.0.11.jar:6.0.11]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:324) ~[spring-beans-6.0.11.jar:6.0.11]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:200) ~[spring-beans-6.0.11.jar:6.0.11]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingletons(DefaultListableBeanFactory.java:973) ~[spring-beans-6.0.11.jar:6.0.11]
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:942) ~[spring-context-6.0.11.jar:6.0.11]
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:608) ~[spring-context-6.0.11.jar:6.0.11]
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:146) ~[spring-boot-3.1.2.jar:3.1.2]
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:734) ~[spring-boot-3.1.2.jar:3.1.2]
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:436) ~[spring-boot-3.1.2.jar:3.1.2]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:312) ~[spring-boot-3.1.2.jar:3.1.2]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1306) ~[spring-boot-3.1.2.jar:3.1.2]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1295) ~[spring-boot-3.1.2.jar:3.1.2]
+	at com.hoaxify.ws.WsApplication.main(WsApplication.java:17) ~[classes/:na]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:na]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77) ~[na:na]
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:na]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568) ~[na:na]
+	at org.springframework.boot.devtools.restart.RestartLauncher.run(RestartLauncher.java:50) ~[spring-boot-devtools-3.1.2.jar:3.1.2]
+Caused by: org.springframework.beans.BeanInstantiationException: Failed to instantiate [org.springframework.boot.CommandLineRunner]: Illegal arguments to factory method 'devUserCreator'; args: org.springframework.data.jpa.repository.support.SimpleJpaRepository@253c11d5,org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder@17b58823
+	at org.springframework.beans.factory.support.SimpleInstantiationStrategy.instantiate(SimpleInstantiationStrategy.java:157) ~[spring-beans-6.0.11.jar:6.0.11]
+	at org.springframework.beans.factory.support.ConstructorResolver.instantiate(ConstructorResolver.java:655) ~[spring-beans-6.0.11.jar:6.0.11]
+	... 24 common frames omitted
+Caused by: java.lang.IllegalArgumentException: object is not an instance of declaring class
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:na]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77) ~[na:na]
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:na]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568) ~[na:na]
+	at org.springframework.beans.factory.support.SimpleInstantiationStrategy.instantiate(SimpleInstantiationStrategy.java:139) ~[spring-beans-6.0.11.jar:6.0.11]
+	... 25 common frames omitted
+
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+ :: Spring Boot ::                (v3.1.2)
+
+2026-01-30T00:12:23.721+01:00  INFO 24752 --- [  restartedMain] com.hoaxify.ws.WsApplication             : Starting WsApplication using Java 17.0.12 with PID 24752 (D:\Spring-and-React-FullStack\ws\target\classes started by azizt in D:\Spring-and-React-FullStack\ws)
+2026-01-30T00:12:23.723+01:00  INFO 24752 --- [  restartedMain] com.hoaxify.ws.WsApplication             : The following 1 profile is active: "dev"
+2026-01-30T00:12:23.855+01:00  INFO 24752 --- [  restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-01-30T00:12:23.857+01:00  INFO 24752 --- [  restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 0 ms. Found 0 JPA repository interfaces.
+2026-01-30T00:12:23.939+01:00  INFO 24752 --- [  restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2026-01-30T00:12:23.941+01:00  INFO 24752 --- [  restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2026-01-30T00:12:23.942+01:00  INFO 24752 --- [  restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.11]
+2026-01-30T00:12:23.960+01:00  INFO 24752 --- [  restartedMain] o.a.c.c.C.[Tomcat-6].[localhost].[/]     : Initializing Spring embedded WebApplicationContext
+2026-01-30T00:12:23.961+01:00  INFO 24752 --- [  restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 236 ms
+2026-01-30T00:12:23.975+01:00  INFO 24752 --- [  restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-8 - Starting...
+2026-01-30T00:12:24.002+01:00  INFO 24752 --- [  restartedMain] com.zaxxer.hikari.pool.HikariPool        : HikariPool-8 - Added connection conn52: url=jdbc:h2:file:./dev.db user=SA
+2026-01-30T00:12:24.004+01:00  INFO 24752 --- [  restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-8 - Start completed.
+2026-01-30T00:12:24.004+01:00  INFO 24752 --- [  restartedMain] o.s.b.a.h2.H2ConsoleAutoConfiguration    : H2 console available at '/h2-console'. Database available at 'jdbc:h2:file:./dev.db'
+2026-01-30T00:12:24.030+01:00  INFO 24752 --- [  restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2026-01-30T00:12:24.036+01:00  INFO 24752 --- [  restartedMain] o.h.b.i.BytecodeProviderInitiator        : HHH000021: Bytecode provider name : bytebuddy
+2026-01-30T00:12:24.037+01:00  INFO 24752 --- [  restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-01-30T00:12:24.039+01:00  INFO 24752 --- [  restartedMain] o.h.b.i.BytecodeProviderInitiator        : HHH000021: Bytecode provider name : bytebuddy
+2026-01-30T00:12:24.047+01:00  INFO 24752 --- [  restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2026-01-30T00:12:24.048+01:00  INFO 24752 --- [  restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-01-30T00:12:24.054+01:00  WARN 24752 --- [  restartedMain] ConfigServletWebServerApplicationContext : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'devUserCreator' defined in com.hoaxify.ws.WsApplication: Unsatisfied dependency expressed through method 'devUserCreator' parameter 0: No qualifying bean of type 'com.hoaxify.ws.user.UserRepository' available: expected at least 1 bean which qualifies as autowire candidate. Dependency annotations: {}
+2026-01-30T00:12:24.055+01:00  INFO 24752 --- [  restartedMain] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-01-30T00:12:24.056+01:00  INFO 24752 --- [  restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-8 - Shutdown initiated...
+2026-01-30T00:12:24.252+01:00  INFO 24752 --- [  restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-8 - Shutdown completed.
+2026-01-30T00:12:24.253+01:00  INFO 24752 --- [  restartedMain] o.apache.catalina.core.StandardService   : Stopping service [Tomcat]
+2026-01-30T00:12:24.257+01:00  INFO 24752 --- [  restartedMain] .s.b.a.l.ConditionEvaluationReportLogger : 
+
+Error starting ApplicationContext. To display the condition evaluation report re-run your application with 'debug' enabled.
+2026-01-30T00:12:24.260+01:00 ERROR 24752 --- [  restartedMain] o.s.b.d.LoggingFailureAnalysisReporter   : 
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+Parameter 0 of method devUserCreator in com.hoaxify.ws.WsApplication required a bean of type 'com.hoaxify.ws.user.UserRepository' that could not be found.
+
+
+Action:
+
+Consider defining a bean of type 'com.hoaxify.ws.user.UserRepository' in your configuration.
+
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+ :: Spring Boot ::                (v3.1.2)
+
+2026-01-30T00:12:25.701+01:00  INFO 24752 --- [  restartedMain] com.hoaxify.ws.WsApplication             : Starting WsApplication using Java 17.0.12 with PID 24752 (D:\Spring-and-React-FullStack\ws\target\classes started by azizt in D:\Spring-and-React-FullStack\ws)
+2026-01-30T00:12:25.702+01:00  INFO 24752 --- [  restartedMain] com.hoaxify.ws.WsApplication             : The following 1 profile is active: "dev"
+2026-01-30T00:12:25.783+01:00  INFO 24752 --- [  restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-01-30T00:12:25.789+01:00  INFO 24752 --- [  restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 4 ms. Found 1 JPA repository interfaces.
+2026-01-30T00:12:25.833+01:00  INFO 24752 --- [  restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2026-01-30T00:12:25.834+01:00  INFO 24752 --- [  restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2026-01-30T00:12:25.835+01:00  INFO 24752 --- [  restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.11]
+2026-01-30T00:12:25.847+01:00  INFO 24752 --- [  restartedMain] o.a.c.c.C.[Tomcat-7].[localhost].[/]     : Initializing Spring embedded WebApplicationContext
+2026-01-30T00:12:25.848+01:00  INFO 24752 --- [  restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 143 ms
+2026-01-30T00:12:25.857+01:00  INFO 24752 --- [  restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-9 - Starting...
+2026-01-30T00:12:25.873+01:00  INFO 24752 --- [  restartedMain] com.zaxxer.hikari.pool.HikariPool        : HikariPool-9 - Added connection conn53: url=jdbc:h2:file:./dev.db user=SA
+2026-01-30T00:12:25.874+01:00  INFO 24752 --- [  restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-9 - Start completed.
+2026-01-30T00:12:25.875+01:00  INFO 24752 --- [  restartedMain] o.s.b.a.h2.H2ConsoleAutoConfiguration    : H2 console available at '/h2-console'. Database available at 'jdbc:h2:file:./dev.db'
+2026-01-30T00:12:25.888+01:00  INFO 24752 --- [  restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2026-01-30T00:12:25.892+01:00  INFO 24752 --- [  restartedMain] o.h.b.i.BytecodeProviderInitiator        : HHH000021: Bytecode provider name : bytebuddy
+2026-01-30T00:12:25.893+01:00  INFO 24752 --- [  restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-01-30T00:12:25.907+01:00  INFO 24752 --- [  restartedMain] o.h.b.i.BytecodeProviderInitiator        : HHH000021: Bytecode provider name : bytebuddy
+2026-01-30T00:12:25.942+01:00  INFO 24752 --- [  restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2026-01-30T00:12:25.947+01:00  INFO 24752 --- [  restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-01-30T00:12:25.953+01:00  WARN 24752 --- [  restartedMain] ConfigServletWebServerApplicationContext : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'devUserCreator' defined in com.hoaxify.ws.WsApplication: Unsatisfied dependency expressed through method 'devUserCreator' parameter 0: No qualifying bean of type 'com.hoaxify.ws.user.UserRepository' available: expected at least 1 bean which qualifies as autowire candidate. Dependency annotations: {}
+2026-01-30T00:12:25.954+01:00  INFO 24752 --- [  restartedMain] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-01-30T00:12:25.955+01:00  INFO 24752 --- [  restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-9 - Shutdown initiated...
+2026-01-30T00:12:26.076+01:00  INFO 24752 --- [  restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-9 - Shutdown completed.
+2026-01-30T00:12:26.077+01:00  INFO 24752 --- [  restartedMain] o.apache.catalina.core.StandardService   : Stopping service [Tomcat]
+2026-01-30T00:12:26.081+01:00  INFO 24752 --- [  restartedMain] .s.b.a.l.ConditionEvaluationReportLogger : 
+
+Error starting ApplicationContext. To display the condition evaluation report re-run your application with 'debug' enabled.
+2026-01-30T00:12:26.084+01:00 ERROR 24752 --- [  restartedMain] o.s.b.d.LoggingFailureAnalysisReporter   : 
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+Parameter 0 of method devUserCreator in com.hoaxify.ws.WsApplication required a bean of type 'com.hoaxify.ws.user.UserRepository' that could not be found.
+
+
+Action:
+
+Consider defining a bean of type 'com.hoaxify.ws.user.UserRepository' in your configuration.
+
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+ :: Spring Boot ::                (v3.1.2)
+
+2026-01-30T00:12:32.581+01:00  INFO 24752 --- [  restartedMain] com.hoaxify.ws.WsApplication             : Starting WsApplication using Java 17.0.12 with PID 24752 (D:\Spring-and-React-FullStack\ws\target\classes started by azizt in D:\Spring-and-React-FullStack\ws)
+2026-01-30T00:12:32.582+01:00  INFO 24752 --- [  restartedMain] com.hoaxify.ws.WsApplication             : The following 1 profile is active: "dev"
+2026-01-30T00:12:32.708+01:00  INFO 24752 --- [  restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-01-30T00:12:32.719+01:00  INFO 24752 --- [  restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 9 ms. Found 1 JPA repository interfaces.
+2026-01-30T00:12:32.773+01:00  INFO 24752 --- [  restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2026-01-30T00:12:32.775+01:00  INFO 24752 --- [  restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2026-01-30T00:12:32.775+01:00  INFO 24752 --- [  restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.11]
+2026-01-30T00:12:32.787+01:00  INFO 24752 --- [  restartedMain] o.a.c.c.C.[Tomcat-8].[localhost].[/]     : Initializing Spring embedded WebApplicationContext
+2026-01-30T00:12:32.788+01:00  INFO 24752 --- [  restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 204 ms
+2026-01-30T00:12:32.797+01:00  INFO 24752 --- [  restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-10 - Starting...
+2026-01-30T00:12:32.817+01:00  INFO 24752 --- [  restartedMain] com.zaxxer.hikari.pool.HikariPool        : HikariPool-10 - Added connection conn54: url=jdbc:h2:file:./dev.db user=SA
+2026-01-30T00:12:32.818+01:00  INFO 24752 --- [  restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-10 - Start completed.
+2026-01-30T00:12:32.819+01:00  INFO 24752 --- [  restartedMain] o.s.b.a.h2.H2ConsoleAutoConfiguration    : H2 console available at '/h2-console'. Database available at 'jdbc:h2:file:./dev.db'
+2026-01-30T00:12:32.835+01:00  INFO 24752 --- [  restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2026-01-30T00:12:32.839+01:00  INFO 24752 --- [  restartedMain] o.h.b.i.BytecodeProviderInitiator        : HHH000021: Bytecode provider name : bytebuddy
+2026-01-30T00:12:32.840+01:00  INFO 24752 --- [  restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-01-30T00:12:32.855+01:00  INFO 24752 --- [  restartedMain] o.h.b.i.BytecodeProviderInitiator        : HHH000021: Bytecode provider name : bytebuddy
+2026-01-30T00:12:32.893+01:00  INFO 24752 --- [  restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2026-01-30T00:12:32.897+01:00  INFO 24752 --- [  restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-01-30T00:12:32.903+01:00  WARN 24752 --- [  restartedMain] ConfigServletWebServerApplicationContext : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'devUserCreator' defined in com.hoaxify.ws.WsApplication: Unsatisfied dependency expressed through method 'devUserCreator' parameter 0: No qualifying bean of type 'com.hoaxify.ws.user.UserRepository' available: expected at least 1 bean which qualifies as autowire candidate. Dependency annotations: {}
+2026-01-30T00:12:32.904+01:00  INFO 24752 --- [  restartedMain] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-01-30T00:12:32.904+01:00  INFO 24752 --- [  restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-10 - Shutdown initiated...
+2026-01-30T00:12:32.965+01:00  INFO 24752 --- [  restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-10 - Shutdown completed.
+2026-01-30T00:12:32.966+01:00  INFO 24752 --- [  restartedMain] o.apache.catalina.core.StandardService   : Stopping service [Tomcat]
+2026-01-30T00:12:32.970+01:00  INFO 24752 --- [  restartedMain] .s.b.a.l.ConditionEvaluationReportLogger : 
+
+Error starting ApplicationContext. To display the condition evaluation report re-run your application with 'debug' enabled.
+2026-01-30T00:12:32.974+01:00 ERROR 24752 --- [  restartedMain] o.s.b.d.LoggingFailureAnalysisReporter   : 
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+Parameter 0 of method devUserCreator in com.hoaxify.ws.WsApplication required a bean of type 'com.hoaxify.ws.user.UserRepository' that could not be found.
+
+
+Action:
+
+Consider defining a bean of type 'com.hoaxify.ws.user.UserRepository' in your configuration.
+
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+ :: Spring Boot ::                (v3.1.2)
+
+2026-01-30T00:12:34.415+01:00  INFO 24752 --- [  restartedMain] com.hoaxify.ws.WsApplication             : Starting WsApplication using Java 17.0.12 with PID 24752 (D:\Spring-and-React-FullStack\ws\target\classes started by azizt in D:\Spring-and-React-FullStack\ws)
+2026-01-30T00:12:34.416+01:00  INFO 24752 --- [  restartedMain] com.hoaxify.ws.WsApplication             : The following 1 profile is active: "dev"
+2026-01-30T00:12:34.489+01:00  INFO 24752 --- [  restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-01-30T00:12:34.494+01:00  INFO 24752 --- [  restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 3 ms. Found 1 JPA repository interfaces.
+2026-01-30T00:12:34.536+01:00  INFO 24752 --- [  restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2026-01-30T00:12:34.537+01:00  INFO 24752 --- [  restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2026-01-30T00:12:34.539+01:00  INFO 24752 --- [  restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.11]
+2026-01-30T00:12:34.551+01:00  INFO 24752 --- [  restartedMain] o.a.c.c.C.[Tomcat-9].[localhost].[/]     : Initializing Spring embedded WebApplicationContext
+2026-01-30T00:12:34.552+01:00  INFO 24752 --- [  restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 135 ms
+2026-01-30T00:12:34.560+01:00  INFO 24752 --- [  restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-11 - Starting...
+2026-01-30T00:12:34.574+01:00  INFO 24752 --- [  restartedMain] com.zaxxer.hikari.pool.HikariPool        : HikariPool-11 - Added connection conn55: url=jdbc:h2:file:./dev.db user=SA
+2026-01-30T00:12:34.575+01:00  INFO 24752 --- [  restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-11 - Start completed.
+2026-01-30T00:12:34.576+01:00  INFO 24752 --- [  restartedMain] o.s.b.a.h2.H2ConsoleAutoConfiguration    : H2 console available at '/h2-console'. Database available at 'jdbc:h2:file:./dev.db'
+2026-01-30T00:12:34.588+01:00  INFO 24752 --- [  restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2026-01-30T00:12:34.592+01:00  INFO 24752 --- [  restartedMain] o.h.b.i.BytecodeProviderInitiator        : HHH000021: Bytecode provider name : bytebuddy
+2026-01-30T00:12:34.593+01:00  INFO 24752 --- [  restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-01-30T00:12:34.608+01:00  INFO 24752 --- [  restartedMain] o.h.b.i.BytecodeProviderInitiator        : HHH000021: Bytecode provider name : bytebuddy
+2026-01-30T00:12:34.647+01:00  INFO 24752 --- [  restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2026-01-30T00:12:34.651+01:00  INFO 24752 --- [  restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-01-30T00:12:34.656+01:00  WARN 24752 --- [  restartedMain] ConfigServletWebServerApplicationContext : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'devUserCreator' defined in com.hoaxify.ws.WsApplication: Unsatisfied dependency expressed through method 'devUserCreator' parameter 0: No qualifying bean of type 'com.hoaxify.ws.user.UserRepository' available: expected at least 1 bean which qualifies as autowire candidate. Dependency annotations: {}
+2026-01-30T00:12:34.657+01:00  INFO 24752 --- [  restartedMain] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-01-30T00:12:34.658+01:00  INFO 24752 --- [  restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-11 - Shutdown initiated...
+2026-01-30T00:12:34.706+01:00  INFO 24752 --- [  restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-11 - Shutdown completed.
+2026-01-30T00:12:34.707+01:00  INFO 24752 --- [  restartedMain] o.apache.catalina.core.StandardService   : Stopping service [Tomcat]
+2026-01-30T00:12:34.711+01:00  INFO 24752 --- [  restartedMain] .s.b.a.l.ConditionEvaluationReportLogger : 
+
+Error starting ApplicationContext. To display the condition evaluation report re-run your application with 'debug' enabled.
+2026-01-30T00:12:34.715+01:00 ERROR 24752 --- [  restartedMain] o.s.b.d.LoggingFailureAnalysisReporter   : 
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+Parameter 0 of method devUserCreator in com.hoaxify.ws.WsApplication required a bean of type 'com.hoaxify.ws.user.UserRepository' that could not be found.
+
+
+Action:
+
+Consider defining a bean of type 'com.hoaxify.ws.user.UserRepository' in your configuration.
+
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+ :: Spring Boot ::                (v3.1.2)
+
+2026-01-30T00:12:49.516+01:00  INFO 24752 --- [  restartedMain] com.hoaxify.ws.WsApplication             : Starting WsApplication using Java 17.0.12 with PID 24752 (D:\Spring-and-React-FullStack\ws\target\classes started by azizt in D:\Spring-and-React-FullStack\ws)
+2026-01-30T00:12:49.517+01:00  INFO 24752 --- [  restartedMain] com.hoaxify.ws.WsApplication             : The following 1 profile is active: "dev"
+2026-01-30T00:12:49.631+01:00  INFO 24752 --- [  restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-01-30T00:12:49.651+01:00  INFO 24752 --- [  restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 18 ms. Found 10 JPA repository interfaces.
+2026-01-30T00:12:49.720+01:00  INFO 24752 --- [  restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2026-01-30T00:12:49.721+01:00  INFO 24752 --- [  restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2026-01-30T00:12:49.722+01:00  INFO 24752 --- [  restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.11]
+2026-01-30T00:12:49.734+01:00  INFO 24752 --- [  restartedMain] o.a.c.c.C.[Tomcat-10].[localhost].[/]    : Initializing Spring embedded WebApplicationContext
+2026-01-30T00:12:49.734+01:00  INFO 24752 --- [  restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 214 ms
+2026-01-30T00:12:49.746+01:00  INFO 24752 --- [  restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-12 - Starting...
+2026-01-30T00:12:49.761+01:00  INFO 24752 --- [  restartedMain] com.zaxxer.hikari.pool.HikariPool        : HikariPool-12 - Added connection conn56: url=jdbc:h2:file:./dev.db user=SA
+2026-01-30T00:12:49.762+01:00  INFO 24752 --- [  restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-12 - Start completed.
+2026-01-30T00:12:49.763+01:00  INFO 24752 --- [  restartedMain] o.s.b.a.h2.H2ConsoleAutoConfiguration    : H2 console available at '/h2-console'. Database available at 'jdbc:h2:file:./dev.db'
+2026-01-30T00:12:49.783+01:00  INFO 24752 --- [  restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2026-01-30T00:12:49.787+01:00  INFO 24752 --- [  restartedMain] o.h.b.i.BytecodeProviderInitiator        : HHH000021: Bytecode provider name : bytebuddy
+2026-01-30T00:12:49.787+01:00  INFO 24752 --- [  restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-01-30T00:12:49.804+01:00  INFO 24752 --- [  restartedMain] o.h.b.i.BytecodeProviderInitiator        : HHH000021: Bytecode provider name : bytebuddy
+2026-01-30T00:12:49.849+01:00  INFO 24752 --- [  restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2026-01-30T00:12:49.854+01:00  INFO 24752 --- [  restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-01-30T00:12:49.893+01:00  WARN 24752 --- [  restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2026-01-30T00:12:50.140+01:00  INFO 24752 --- [  restartedMain] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@198e4b70, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@4cd22cce, org.springframework.security.web.context.SecurityContextHolderFilter@29e2ac6c, org.springframework.security.web.authentication.logout.LogoutFilter@52b0a527, com.hoaxify.ws.configuration.TokenFilter@286bb022, org.springframework.security.web.authentication.www.BasicAuthenticationFilter@4e405602, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@2c038cb7, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@a24e132, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@362169fc, org.springframework.security.web.access.ExceptionTranslationFilter@108e9878, org.springframework.security.web.access.intercept.AuthorizationFilter@4fe6bdfd]
+2026-01-30T00:12:50.177+01:00  WARN 24752 --- [  restartedMain] ConfigServletWebServerApplicationContext : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'devUserCreator' defined in com.hoaxify.ws.WsApplication: Failed to instantiate [org.springframework.boot.CommandLineRunner]: Illegal arguments to factory method 'devUserCreator'; args: org.springframework.data.jpa.repository.support.SimpleJpaRepository@652f4871,org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder@648075b4
+2026-01-30T00:12:50.178+01:00  INFO 24752 --- [  restartedMain] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-01-30T00:12:50.179+01:00  INFO 24752 --- [  restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-12 - Shutdown initiated...
+2026-01-30T00:12:50.234+01:00  INFO 24752 --- [  restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-12 - Shutdown completed.
+2026-01-30T00:12:50.235+01:00  INFO 24752 --- [  restartedMain] o.apache.catalina.core.StandardService   : Stopping service [Tomcat]
+2026-01-30T00:12:50.239+01:00  INFO 24752 --- [  restartedMain] .s.b.a.l.ConditionEvaluationReportLogger : 
+
+Error starting ApplicationContext. To display the condition evaluation report re-run your application with 'debug' enabled.
+2026-01-30T00:12:50.241+01:00 ERROR 24752 --- [  restartedMain] o.s.boot.SpringApplication               : Application run failed
+
+org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'devUserCreator' defined in com.hoaxify.ws.WsApplication: Failed to instantiate [org.springframework.boot.CommandLineRunner]: Illegal arguments to factory method 'devUserCreator'; args: org.springframework.data.jpa.repository.support.SimpleJpaRepository@652f4871,org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder@648075b4
+	at org.springframework.beans.factory.support.ConstructorResolver.instantiate(ConstructorResolver.java:659) ~[spring-beans-6.0.11.jar:6.0.11]
+	at org.springframework.beans.factory.support.ConstructorResolver.instantiateUsingFactoryMethod(ConstructorResolver.java:647) ~[spring-beans-6.0.11.jar:6.0.11]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.instantiateUsingFactoryMethod(AbstractAutowireCapableBeanFactory.java:1332) ~[spring-beans-6.0.11.jar:6.0.11]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1162) ~[spring-beans-6.0.11.jar:6.0.11]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:560) ~[spring-beans-6.0.11.jar:6.0.11]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:520) ~[spring-beans-6.0.11.jar:6.0.11]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:326) ~[spring-beans-6.0.11.jar:6.0.11]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234) ~[spring-beans-6.0.11.jar:6.0.11]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:324) ~[spring-beans-6.0.11.jar:6.0.11]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:200) ~[spring-beans-6.0.11.jar:6.0.11]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingletons(DefaultListableBeanFactory.java:973) ~[spring-beans-6.0.11.jar:6.0.11]
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:942) ~[spring-context-6.0.11.jar:6.0.11]
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:608) ~[spring-context-6.0.11.jar:6.0.11]
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:146) ~[spring-boot-3.1.2.jar:3.1.2]
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:734) ~[spring-boot-3.1.2.jar:3.1.2]
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:436) ~[spring-boot-3.1.2.jar:3.1.2]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:312) ~[spring-boot-3.1.2.jar:3.1.2]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1306) ~[spring-boot-3.1.2.jar:3.1.2]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1295) ~[spring-boot-3.1.2.jar:3.1.2]
+	at com.hoaxify.ws.WsApplication.main(WsApplication.java:17) ~[classes/:na]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:na]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77) ~[na:na]
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:na]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568) ~[na:na]
+	at org.springframework.boot.devtools.restart.RestartLauncher.run(RestartLauncher.java:50) ~[spring-boot-devtools-3.1.2.jar:3.1.2]
+Caused by: org.springframework.beans.BeanInstantiationException: Failed to instantiate [org.springframework.boot.CommandLineRunner]: Illegal arguments to factory method 'devUserCreator'; args: org.springframework.data.jpa.repository.support.SimpleJpaRepository@652f4871,org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder@648075b4
+	at org.springframework.beans.factory.support.SimpleInstantiationStrategy.instantiate(SimpleInstantiationStrategy.java:157) ~[spring-beans-6.0.11.jar:6.0.11]
+	at org.springframework.beans.factory.support.ConstructorResolver.instantiate(ConstructorResolver.java:655) ~[spring-beans-6.0.11.jar:6.0.11]
+	... 24 common frames omitted
+Caused by: java.lang.IllegalArgumentException: object is not an instance of declaring class
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:na]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77) ~[na:na]
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:na]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568) ~[na:na]
+	at org.springframework.beans.factory.support.SimpleInstantiationStrategy.instantiate(SimpleInstantiationStrategy.java:139) ~[spring-beans-6.0.11.jar:6.0.11]
+	... 25 common frames omitted
+

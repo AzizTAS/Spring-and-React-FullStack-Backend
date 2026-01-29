@@ -1,8 +1,5 @@
 package com.hoaxify.ws.cart;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
@@ -16,7 +13,6 @@ import com.hoaxify.ws.cart.dto.UpdateQuantityRequest;
 @RequestMapping("/api/v1/cart")
 public class CartController {
 
-    private static final Logger log = LoggerFactory.getLogger(CartController.class);
     private final CartService cartService;
 
     public CartController(CartService cartService) {
@@ -30,72 +26,25 @@ public class CartController {
         return ResponseEntity.ok(CartDTO.fromEntity(cart));
     }
 
-    @GetMapping("/test-add/{productId}")
-    @PreAuthorize("hasRole('USER') or hasRole('ADMIN')")
-    public ResponseEntity<String> testAddToCart(@AuthenticationPrincipal CurrentUser currentUser,
-            @PathVariable Long productId) {
-        try {
-            log.info("=== TEST ADD TO CART ===");
-            log.info("CurrentUser ID: {}", currentUser != null ? currentUser.getId() : "null");
-            log.info("ProductId: {}", productId);
-            
-            cartService.addToCart(currentUser, productId, 1);
-            return ResponseEntity.ok("Added to cart via GET test");
-        } catch (Exception e) {
-            log.error("Error in test add to cart", e);
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
-                .body("Error: " + e.getClass().getName() + " - " + e.getMessage());
-        }
-    }
-
-    
-    @GetMapping("/test-param")
-    @PreAuthorize("hasRole('USER') or hasRole('ADMIN')")
-    public ResponseEntity<String> testParamAddToCart(@AuthenticationPrincipal CurrentUser currentUser,
-            @RequestParam Long productId, @RequestParam(defaultValue = "1") int quantity) {
-        try {
-            log.info("=== TEST PARAM ADD TO CART ===");
-            log.info("CurrentUser ID: {}", currentUser != null ? currentUser.getId() : "null");
-            log.info("ProductId: {}, Quantity: {}", productId, quantity);
-
-            cartService.addToCart(currentUser, productId, quantity);
-            return ResponseEntity.ok("Added to cart via test-param");
-        } catch (Exception e) {
-            log.error("Error in test-param add to cart", e);
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
-                .body("Error: " + e.getClass().getName() + " - " + e.getMessage());
-        }
-    }
-
     @PostMapping("/add")
     @PreAuthorize("hasRole('USER') or hasRole('ADMIN')")
-    public ResponseEntity<String> addToCart(@AuthenticationPrincipal CurrentUser currentUser,
-            @RequestBody(required = false) AddToCartRequest request) {
+    public ResponseEntity<?> addToCart(@AuthenticationPrincipal CurrentUser currentUser,
+            @RequestBody AddToCartRequest request) {
         try {
-            log.info("=== ADD TO CART REQUEST ===");
-            log.info("CurrentUser: {}", currentUser != null ? currentUser.getId() : "null");
-            log.info("Request: {}", request != null ? "productId=" + request.getProductId() + ", quantity=" + request.getQuantity() : "null");
-
-            if (request == null) {
-                return ResponseEntity.badRequest().body("Request body is null");
+            if (request == null || request.getProductId() == null) {
+                return ResponseEntity.badRequest().body("ProductId is required");
             }
-            if (request.getProductId() == null) {
-                return ResponseEntity.badRequest().body("ProductId is null");
-            }
-
-            cartService.addToCart(currentUser, request.getProductId(), request.getQuantity());
+            int qty = request.getQuantity() > 0 ? request.getQuantity() : 1;
+            cartService.addToCart(currentUser, request.getProductId(), qty);
             return ResponseEntity.ok("Added to cart");
         } catch (Exception e) {
-            log.error("Error adding to cart", e);
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
-                .body("Error: " + e.getClass().getName() + " - " + e.getMessage());
+            return ResponseEntity.internalServerError().body("Error: " + e.getMessage());
         }
     }
 
     @DeleteMapping("/item/{cartItemId}")
     @PreAuthorize("hasRole('USER') or hasRole('ADMIN')")
-    public ResponseEntity<String> removeFromCart(
-            @AuthenticationPrincipal CurrentUser currentUser,
+    public ResponseEntity<String> removeFromCart(@AuthenticationPrincipal CurrentUser currentUser,
             @PathVariable Long cartItemId) {
         cartService.removeFromCart(currentUser, cartItemId);
         return ResponseEntity.ok("Removed from cart");
@@ -103,10 +52,8 @@ public class CartController {
 
     @PutMapping("/item/{cartItemId}")
     @PreAuthorize("hasRole('USER') or hasRole('ADMIN')")
-    public ResponseEntity<String> updateQuantity(
-            @AuthenticationPrincipal CurrentUser currentUser,
-            @PathVariable Long cartItemId,
-            @RequestBody UpdateQuantityRequest request) {
+    public ResponseEntity<String> updateQuantity(@AuthenticationPrincipal CurrentUser currentUser,
+            @PathVariable Long cartItemId, @RequestBody UpdateQuantityRequest request) {
         cartService.updateCartItemQuantity(currentUser, cartItemId, request.getQuantity());
         return ResponseEntity.ok("Quantity updated");
     }

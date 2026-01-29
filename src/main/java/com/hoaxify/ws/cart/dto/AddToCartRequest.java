@@ -5,7 +5,13 @@ public class AddToCartRequest {
     private Long productId;
     private int quantity = 1;
 
-    public AddToCartRequest() {}
+    public AddToCartRequest() {
+    }
+
+    public AddToCartRequest(Long productId, int quantity) {
+        this.productId = productId;
+        this.quantity = quantity;
+    }
 
     public Long getProductId() {
         return productId;
