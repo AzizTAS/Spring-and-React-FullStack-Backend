@@ -1,4 +1,5 @@
 package com.hoaxify.ws.cart;
+// Cart entity for shopping cart functionality
 
 import java.time.LocalDateTime;
 import java.util.List;
