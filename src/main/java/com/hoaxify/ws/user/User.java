@@ -43,6 +43,8 @@ public class User {
 
     String passwordResetToken;
 
+    String role = "USER";
+
     public List<Token> getTokens() {
         return tokens;
     }
@@ -117,4 +119,12 @@ public class User {
 
 
     
+    public String getRole() {
+        return role;
+    }
+
+    public void setRole(String role) {
+        this.role = role;
+    }
+
 }
