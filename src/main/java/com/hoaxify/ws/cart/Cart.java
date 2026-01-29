@@ -28,7 +28,7 @@ public class Cart {
     private User user;
 
     @OneToMany(mappedBy = "cart", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<CartItem> items;
+    private List<CartItem> items = new java.util.ArrayList<>();
 
     private LocalDateTime createdDate;
 

@@ -19,7 +19,7 @@ public class CartDTO {
     public CartDTO(Cart cart) {
         this.id = cart.getId();
         this.userId = cart.getUser().getId();
-        this.items = cart.getItems().stream().map(item -> {
+        this.items = cart.getItems() != null ? cart.getItems().stream().map(item -> {
             CartItemDTO dto = new CartItemDTO();
             dto.setId(item.getId());
             dto.setProductId(item.getProduct().getId());
@@ -28,7 +28,7 @@ public class CartDTO {
             dto.setPriceAtTime(item.getPriceAtTime());
             dto.setTotalPrice(item.getPriceAtTime().multiply(new BigDecimal(item.getQuantity())));
             return dto;
-        }).collect(Collectors.toList());
+        }).collect(Collectors.toList()) : new java.util.ArrayList<>();
 
         this.totalAmount = this.items.stream()
                 .map(CartItemDTO::getTotalPrice)
