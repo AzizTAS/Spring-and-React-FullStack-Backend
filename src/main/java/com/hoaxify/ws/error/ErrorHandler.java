@@ -4,6 +4,7 @@ import java.util.stream.Collectors;
 
 import org.springframework.context.i18n.LocaleContextHolder;
 import org.springframework.http.ResponseEntity;
+import org.springframework.http.converter.HttpMessageNotReadableException;
 import org.springframework.validation.FieldError;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
@@ -15,6 +16,7 @@ import com.hoaxify.ws.user.exception.ActivationNotificationException;
 import com.hoaxify.ws.user.exception.InvalidTokenException;
 import com.hoaxify.ws.user.exception.NotFoundException;
 import com.hoaxify.ws.user.exception.NotUniqueEmailException;
+import com.hoaxify.ws.product.exception.ProductNotFoundException;
 
 import jakarta.servlet.http.HttpServletRequest;
 
@@ -28,6 +30,8 @@ public class ErrorHandler {
         InvalidTokenException.class,
         NotFoundException.class,
         AuthenticationException.class,
+        ProductNotFoundException.class,
+        HttpMessageNotReadableException.class,
     })
     ResponseEntity<ApiError> handleException(Exception exception, HttpServletRequest request){
         ApiError apiError = new ApiError();
@@ -48,11 +52,24 @@ public class ErrorHandler {
             apiError.setStatus(400);
         } else if (exception instanceof NotFoundException) {
             apiError.setStatus(404);
+        } else if (exception instanceof ProductNotFoundException) {
+            apiError.setStatus(404);
         } else if (exception instanceof AuthenticationException) {
             apiError.setStatus(401);
+        } else if (exception instanceof HttpMessageNotReadableException) {
+            apiError.setStatus(400);
+            apiError.setMessage("Invalid request body: " + exception.getMessage());
         }
 
         return ResponseEntity.status(apiError.getStatus()).body(apiError);
     }
-    
+
+    @ExceptionHandler(Exception.class)
+    ResponseEntity<ApiError> handleAllExceptions(Exception exception, HttpServletRequest request) {
+        ApiError apiError = new ApiError();
+        apiError.setPath(request.getRequestURI());
+        apiError.setStatus(500);
+        apiError.setMessage("Unexpected error: " + exception.getClass().getName() + " - " + exception.getMessage());
+        return ResponseEntity.status(500).body(apiError);
+    }
 }
