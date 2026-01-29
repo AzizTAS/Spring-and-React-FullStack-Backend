@@ -48,6 +48,25 @@ public class CartController {
         }
     }
 
+    
+    @GetMapping("/test-param")
+    @PreAuthorize("hasRole('USER') or hasRole('ADMIN')")
+    public ResponseEntity<String> testParamAddToCart(@AuthenticationPrincipal CurrentUser currentUser,
+            @RequestParam Long productId, @RequestParam(defaultValue = "1") int quantity) {
+        try {
+            log.info("=== TEST PARAM ADD TO CART ===");
+            log.info("CurrentUser ID: {}", currentUser != null ? currentUser.getId() : "null");
+            log.info("ProductId: {}, Quantity: {}", productId, quantity);
+
+            cartService.addToCart(currentUser, productId, quantity);
+            return ResponseEntity.ok("Added to cart via test-param");
+        } catch (Exception e) {
+            log.error("Error in test-param add to cart", e);
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
+                .body("Error: " + e.getClass().getName() + " - " + e.getMessage());
+        }
+    }
+
     @PostMapping("/add")
     @PreAuthorize("hasRole('USER') or hasRole('ADMIN')")
     public ResponseEntity<String> addToCart(@AuthenticationPrincipal CurrentUser currentUser,
