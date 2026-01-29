@@ -1,5 +1,5 @@
 package com.hoaxify.ws.cart;
-// Cart entity for shopping cart functionality
+// Cart entity - forced redeploy 2026-01-29 22:27
 
 import java.time.LocalDateTime;
 import java.util.List;
@@ -72,3 +72,5 @@ public class Cart {
     }
 
 }
+
+
