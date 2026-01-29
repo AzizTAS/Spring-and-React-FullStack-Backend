@@ -1,5 +1,6 @@
 package com.hoaxify.ws.cart;
 
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
@@ -30,8 +31,13 @@ public class CartController {
     @PreAuthorize("hasRole('USER') or hasRole('ADMIN')")
     public ResponseEntity<String> addToCart(@AuthenticationPrincipal CurrentUser currentUser,
             @RequestBody AddToCartRequest request) {
-        cartService.addToCart(currentUser, request.getProductId(), request.getQuantity());
-        return ResponseEntity.ok("Added to cart");
+        try {
+            cartService.addToCart(currentUser, request.getProductId(), request.getQuantity());
+            return ResponseEntity.ok("Added to cart");
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
+                .body("Error: " + e.getClass().getName() + " - " + e.getMessage());
+        }
     }
 
     @DeleteMapping("/item/{cartItemId}")
