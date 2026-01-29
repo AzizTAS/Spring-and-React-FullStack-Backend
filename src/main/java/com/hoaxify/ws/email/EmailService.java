@@ -6,6 +6,7 @@ import org.springframework.context.MessageSource;
 import org.springframework.context.i18n.LocaleContextHolder;
 import org.springframework.mail.javamail.JavaMailSenderImpl;
 import org.springframework.mail.javamail.MimeMessageHelper;
+import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;
 
 import com.hoaxify.ws.configuration.HoaxifyProperties;
@@ -53,6 +54,7 @@ public class EmailService {
             </html>
             """;
 
+    @Async
     public void sendActivationEmail(String email, String activationToken) {
         var activationUrl = hoaxifyProperties.getClient().host() + "/activation/" + activationToken;
         var title = messageSource.getMessage("hoaxify.mail.user.created.title", null, LocaleContextHolder.getLocale());
@@ -77,6 +79,7 @@ public class EmailService {
         this.mailSender.send(mimeMessage);
     }
 
+    @Async
     public void sendPasswordResetEmail(String email, String passwordResetToken) {
         String passwordResetUrl = hoaxifyProperties.getClient().host() + "/password-reset/set?tk=" + passwordResetToken;
         MimeMessage mimeMessage = mailSender.createMimeMessage();
