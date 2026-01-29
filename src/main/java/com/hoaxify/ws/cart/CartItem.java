@@ -1,4 +1,4 @@
-package com.hoaxify.ws.cart;
+﻿package com.hoaxify.ws.cart;
 
 import java.math.BigDecimal;
 
@@ -6,6 +6,7 @@ import com.hoaxify.ws.product.Product;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
@@ -21,11 +22,11 @@ public class CartItem {
     @GeneratedValue
     private long id;
 
-    @ManyToOne(optional = false)
+    @ManyToOne(optional = false, fetch = FetchType.LAZY)
     @JoinColumn(name = "cart_id", nullable = false)
     private Cart cart;
 
-    @ManyToOne(optional = false)
+    @ManyToOne(optional = false, fetch = FetchType.EAGER)
     @JoinColumn(name = "product_id", nullable = false)
     private Product product;
 
@@ -35,7 +36,6 @@ public class CartItem {
     @Column(nullable = false)
     private BigDecimal priceAtTime;
 
-    // Getters and Setters
     public long getId() {
         return id;
     }
@@ -75,5 +75,4 @@ public class CartItem {
     public void setPriceAtTime(BigDecimal priceAtTime) {
         this.priceAtTime = priceAtTime;
     }
-
 }

@@ -1,4 +1,4 @@
-package com.hoaxify.ws.cart;
+﻿package com.hoaxify.ws.cart;
 
 import org.springframework.stereotype.Service;
 
@@ -12,6 +12,7 @@ import com.hoaxify.ws.user.UserService;
 import jakarta.transaction.Transactional;
 
 @Service
+@Transactional
 public class CartService {
 
     private final CartRepository cartRepository;
@@ -27,7 +28,6 @@ public class CartService {
         this.productService = productService;
     }
 
-    @Transactional
     public Cart getOrCreateCart(CurrentUser currentUser) {
         Cart cart = cartRepository.findByUserId(currentUser.getId());
         if (cart == null) {
@@ -44,12 +44,10 @@ public class CartService {
                 .orElseThrow(() -> new CartNotFoundException(id));
     }
 
-    @Transactional
     public void addToCart(CurrentUser currentUser, long productId, int quantity) {
         Cart cart = getOrCreateCart(currentUser);
         Product product = productService.getProduct(productId);
 
-        // Check if product already in cart
         CartItem cartItem = cartItemRepository.findByCartIdAndProductId(cart.getId(), productId);
         if (cartItem != null) {
             cartItem.setQuantity(cartItem.getQuantity() + quantity);
@@ -64,12 +62,10 @@ public class CartService {
         }
     }
 
-    @Transactional
     public void removeFromCart(CurrentUser currentUser, long cartItemId) {
         CartItem cartItem = cartItemRepository.findById(cartItemId)
                 .orElseThrow(() -> new RuntimeException("CartItem not found"));
 
-        // Verify user owns this cart
         if (cartItem.getCart().getUser().getId() != currentUser.getId()) {
             throw new RuntimeException("Unauthorized");
         }
@@ -77,12 +73,10 @@ public class CartService {
         cartItemRepository.delete(cartItem);
     }
 
-    @Transactional
     public void updateCartItemQuantity(CurrentUser currentUser, long cartItemId, int quantity) {
         CartItem cartItem = cartItemRepository.findById(cartItemId)
                 .orElseThrow(() -> new RuntimeException("CartItem not found"));
 
-        // Verify user owns this cart
         if (cartItem.getCart().getUser().getId() != currentUser.getId()) {
             throw new RuntimeException("Unauthorized");
         }
@@ -95,10 +89,8 @@ public class CartService {
         }
     }
 
-    @Transactional
     public void clearCart(CurrentUser currentUser) {
         Cart cart = getOrCreateCart(currentUser);
         cartItemRepository.deleteByCartId(cart.getId());
     }
-
 }
