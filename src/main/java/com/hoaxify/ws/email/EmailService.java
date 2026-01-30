@@ -44,13 +44,14 @@ public class EmailService {
 
         Properties properties = mailSender.getJavaMailProperties();
         properties.put("mail.smtp.auth", "true");
-        properties.put("mail.smtp.starttls.enable", "true");
-        properties.put("mail.smtp.starttls.required", "true");
+        properties.put("mail.smtp.ssl.enable", "true"); // SSL for port 465
         properties.put("mail.smtp.ssl.protocols", "TLSv1.2");
-        properties.put("mail.smtp.connectiontimeout", "10000"); // 10 seconds
-        properties.put("mail.smtp.timeout", "10000"); // 10 seconds
-        properties.put("mail.smtp.writetimeout", "10000"); // 10 seconds
+        properties.put("mail.smtp.connectiontimeout", "15000"); // 15 seconds
+        properties.put("mail.smtp.timeout", "15000"); // 15 seconds
+        properties.put("mail.smtp.writetimeout", "15000"); // 15 seconds
         properties.put("mail.debug", "true"); // Debug logging
+        
+        logger.info("SMTP Configuration - Port: {}, SSL: enabled", hoaxifyProperties.getEmail().port());
         
         logger.info("EmailService initialized successfully");
     }
