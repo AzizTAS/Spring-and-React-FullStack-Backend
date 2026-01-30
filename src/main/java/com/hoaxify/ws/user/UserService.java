@@ -6,7 +6,7 @@ import java.util.UUID;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
-import org.springframework.mail.MailException;
+// SendGrid uses general Exception instead of MailException
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
@@ -46,7 +46,7 @@ public class UserService {
         this.fileService = fileService;
     }
 
-    @Transactional(rollbackOn = MailException.class)
+    @Transactional(rollbackOn = Exception.class)
     public void save(User user) {
         try {
             user.setPassword(passwordEncoder.encode(user.getPassword()));
@@ -64,7 +64,7 @@ public class UserService {
             }
         } catch (DataIntegrityViolationException ex) {
             throw new NotUniqueEmailException();
-        } catch (MailException ex) {
+        } catch (Exception ex) {
             throw new ActivationNotificationException();
         }
     }
