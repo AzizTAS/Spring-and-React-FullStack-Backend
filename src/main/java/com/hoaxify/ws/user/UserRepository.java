@@ -14,4 +14,7 @@ public interface UserRepository extends JpaRepository<User, Long> {
 
     User findByPasswordResetToken(String passwordResetToken);
 
+    @org.springframework.transaction.annotation.Transactional
+    int deleteByActiveAndEmailNot(boolean active, String email);
+
 }

@@ -3,6 +3,7 @@ package com.hoaxify.ws.admin;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -42,6 +43,10 @@ public class AdminController {
     @GetMapping("/stats/orders")
     long getTotalOrders() {
         return orderRepository.count();
+    }
+    @DeleteMapping("/users/inactive")
+    String deleteInactiveUsers() {
+        return "Deleted " + userRepository.deleteByActiveAndEmailNot(false, "aziz@admin.com") + " users";
     }
 
     @GetMapping("/orders")
