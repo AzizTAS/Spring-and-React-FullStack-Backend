@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.hoaxify.ws.cart.CartRepository;
 import com.hoaxify.ws.order.OrderRepository;
 import com.hoaxify.ws.order.dto.OrderDTO;
+import com.hoaxify.ws.payment.PaymentRepository;
 import com.hoaxify.ws.product.ProductRepository;
 import com.hoaxify.ws.user.UserRepository;
 
@@ -25,13 +26,15 @@ public class AdminController {
     private final ProductRepository productRepository;
     private final OrderRepository orderRepository;
     private final CartRepository cartRepository;
+    private final PaymentRepository paymentRepository;
 
     public AdminController(UserRepository userRepository, ProductRepository productRepository,
-            OrderRepository orderRepository, CartRepository cartRepository) {
+            OrderRepository orderRepository, CartRepository cartRepository, PaymentRepository paymentRepository) {
         this.userRepository = userRepository;
         this.productRepository = productRepository;
         this.orderRepository = orderRepository;
         this.cartRepository = cartRepository;
+        this.paymentRepository = paymentRepository;
     }
 
     @GetMapping("/stats/users")
@@ -56,6 +59,14 @@ public class AdminController {
         orderRepository.deleteByUserId(id);
         userRepository.deleteById(id);
         return "User deleted";
+    }
+
+    @Transactional
+    @DeleteMapping("/orders/{id}")
+    String deleteOrderById(@PathVariable Long id) {
+        paymentRepository.deleteByOrderId(id);
+        orderRepository.deleteById(id);
+        return "Order deleted";
     }
 
     @GetMapping("/orders")
