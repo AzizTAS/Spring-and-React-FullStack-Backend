@@ -4,12 +4,11 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.hoaxify.ws.order.Order;
 import com.hoaxify.ws.order.OrderRepository;
 import com.hoaxify.ws.order.dto.OrderDTO;
 import com.hoaxify.ws.product.ProductRepository;
@@ -45,20 +44,15 @@ public class AdminController {
     long getTotalOrders() {
         return orderRepository.count();
     }
-    @DeleteMapping("/users/inactive")
 
     @DeleteMapping("/users/{id}")
     String deleteUserById(@PathVariable Long id) {
         userRepository.deleteById(id);
-        return "User " + id + " deleted";
-    }
-    String deleteInactiveUsers() {
-        return "Deleted " + userRepository.deleteByActiveAndEmailNot(false, "aziz@admin.com") + " users";
+        return "User deleted";
     }
 
     @GetMapping("/orders")
     Page<OrderDTO> getAllOrders(Pageable page) {
         return orderRepository.findAll(page).map(OrderDTO::new);
     }
-
 }
