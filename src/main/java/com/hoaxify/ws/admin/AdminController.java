@@ -3,6 +3,7 @@ package com.hoaxify.ws.admin;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -48,6 +49,7 @@ public class AdminController {
         return orderRepository.count();
     }
 
+    @Transactional
     @DeleteMapping("/users/{id}")
     String deleteUserById(@PathVariable Long id) {
         cartRepository.deleteByUserId(id);
