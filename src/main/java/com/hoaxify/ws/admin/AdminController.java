@@ -53,6 +53,7 @@ public class AdminController {
     @DeleteMapping("/users/{id}")
     String deleteUserById(@PathVariable Long id) {
         cartRepository.deleteByUserId(id);
+        orderRepository.deleteByUserId(id);
         userRepository.deleteById(id);
         return "User deleted";
     }
