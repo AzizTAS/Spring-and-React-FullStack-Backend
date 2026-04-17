@@ -2,7 +2,6 @@ package com.hoaxify.ws.configuration;
 
 import java.io.IOException;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.security.authentication.DisabledException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -24,14 +23,13 @@ import jakarta.servlet.http.HttpServletResponse;
 public class TokenFilter extends OncePerRequestFilter {
 
     private final TokenService tokenService;
+    private final HandlerExceptionResolver exceptionResolver;
 
-    public TokenFilter(TokenService tokenService) {
+    public TokenFilter(TokenService tokenService,
+            @Qualifier("handlerExceptionResolver") HandlerExceptionResolver exceptionResolver) {
         this.tokenService = tokenService;
+        this.exceptionResolver = exceptionResolver;
     }
-
-    @Autowired
-    @Qualifier("handlerExceptionResolver")
-    private HandlerExceptionResolver exceptionResolver;
 
     @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain)
@@ -69,5 +67,4 @@ public class TokenFilter extends OncePerRequestFilter {
         }
         return tokenWithPrefix;
     }
-
 }

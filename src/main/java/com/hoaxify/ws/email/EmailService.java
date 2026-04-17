@@ -22,10 +22,10 @@ public class EmailService {
 
     private static final Logger logger = LoggerFactory.getLogger(EmailService.class);
 
-    @Value("${sendgrid.api.key}")
+    @Value("${sendgrid.api.key:}")
     private String sendGridApiKey;
 
-    @Value("${sendgrid.from.email}")
+    @Value("${sendgrid.from.email:noreply@my-app.com}")
     private String fromEmail;
 
     private final HoaxifyProperties hoaxifyProperties;
