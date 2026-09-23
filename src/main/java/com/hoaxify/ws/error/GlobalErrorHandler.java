@@ -5,7 +5,10 @@ import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.AccessDeniedException;
+import org.springframework.security.authentication.AnonymousAuthenticationToken;
 import org.springframework.security.authentication.DisabledException;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
@@ -22,7 +25,9 @@ public class GlobalErrorHandler extends ResponseEntityExceptionHandler {
         ApiError error = new ApiError();
         error.setMessage(exception.getMessage());
         error.setPath(request.getRequestURI());
-        if (exception instanceof DisabledException) {
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        boolean anonymous = auth == null || auth instanceof AnonymousAuthenticationToken;
+        if (exception instanceof DisabledException || anonymous) {
             error.setStatus(HttpStatus.UNAUTHORIZED.value());
         } else {
             error.setStatus(HttpStatus.FORBIDDEN.value());

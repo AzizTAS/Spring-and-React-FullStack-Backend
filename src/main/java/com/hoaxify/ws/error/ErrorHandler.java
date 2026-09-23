@@ -63,13 +63,4 @@ public class ErrorHandler {
 
         return ResponseEntity.status(apiError.getStatus()).body(apiError);
     }
-
-    @ExceptionHandler(Exception.class)
-    ResponseEntity<ApiError> handleAllExceptions(Exception exception, HttpServletRequest request) {
-        ApiError apiError = new ApiError();
-        apiError.setPath(request.getRequestURI());
-        apiError.setStatus(500);
-        apiError.setMessage("Unexpected error: " + exception.getClass().getName() + " - " + exception.getMessage());
-        return ResponseEntity.status(500).body(apiError);
-    }
 }
