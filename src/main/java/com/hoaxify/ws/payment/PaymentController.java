@@ -1,5 +1,6 @@
 package com.hoaxify.ws.payment;
 
+import org.springframework.security.access.AccessDeniedException;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -29,14 +30,23 @@ public class PaymentController {
 
     @GetMapping("/{id}")
     @PreAuthorize("isAuthenticated()")
-    PaymentDTO getPayment(@PathVariable long id) {
-        return new PaymentDTO(paymentService.getPayment(id));
+    PaymentDTO getPayment(@AuthenticationPrincipal CurrentUser currentUser, @PathVariable long id) {
+        return new PaymentDTO(checkAccess(currentUser, paymentService.getPayment(id)));
     }
 
     @GetMapping("/order/{orderId}")
     @PreAuthorize("isAuthenticated()")
-    PaymentDTO getPaymentByOrderId(@PathVariable long orderId) {
-        return new PaymentDTO(paymentService.getPaymentByOrderId(orderId));
+    PaymentDTO getPaymentByOrderId(@AuthenticationPrincipal CurrentUser currentUser, @PathVariable long orderId) {
+        return new PaymentDTO(checkAccess(currentUser, paymentService.getPaymentByOrderId(orderId)));
+    }
+
+    private Payment checkAccess(CurrentUser currentUser, Payment payment) {
+        boolean isAdmin = currentUser.getAuthorities().stream()
+                .anyMatch(a -> a.getAuthority().equals("ROLE_ADMIN"));
+        if (!isAdmin && payment.getOrder().getUser().getId() != currentUser.getId()) {
+            throw new AccessDeniedException("Unauthorized");
+        }
+        return payment;
     }
 
     @PostMapping("/order/{orderId}")

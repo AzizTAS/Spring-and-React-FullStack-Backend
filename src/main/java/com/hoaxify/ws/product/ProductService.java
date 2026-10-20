@@ -50,7 +50,16 @@ public class ProductService {
         if (keyword == null || keyword.isBlank()) {
             return getProducts(page);
         }
-        return productRepository.searchByPattern("%" + keyword.trim().toLowerCase() + "%", page);
+        return productRepository.searchByPattern("%" + foldTurkish(keyword.trim()) + "%", page);
+    }
+
+    static String foldTurkish(String s) {
+        StringBuilder sb = new StringBuilder(s.length());
+        for (char c : s.toCharArray()) {
+            int i = ProductRepository.TR_FROM.indexOf(c);
+            sb.append(i >= 0 ? ProductRepository.TR_TO.charAt(i) : c);
+        }
+        return sb.toString().toLowerCase(java.util.Locale.ROOT);
     }
 
     public Product updateProduct(Long id, ProductCreate dto) {
