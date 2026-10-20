@@ -50,7 +50,7 @@ public class ProductService {
         if (keyword == null || keyword.isBlank()) {
             return getProducts(page);
         }
-        return productRepository.searchByKeyword(keyword, page);
+        return productRepository.searchByPattern("%" + keyword.trim().toLowerCase() + "%", page);
     }
 
     public Product updateProduct(Long id, ProductCreate dto) {
@@ -74,7 +74,7 @@ public class ProductService {
         Product product = getProduct(productId);
         int newStock = product.getStock() - quantity;
         if (newStock < 0) {
-            throw new RuntimeException("Insufficient stock for product: " + product.getName());
+            throw new IllegalStateException("Insufficient stock for product: " + product.getName());
         }
         product.setStock(newStock);
         productRepository.save(product);

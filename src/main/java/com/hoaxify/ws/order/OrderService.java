@@ -52,7 +52,7 @@ public class OrderService {
         Cart cart = cartService.getOrCreateCart(currentUser);
 
         if (cart.getItems() == null || cart.getItems().isEmpty()) {
-            throw new RuntimeException("Cart is empty");
+            throw new IllegalStateException("Cart is empty");
         }
 
         for (CartItem cartItem : cart.getItems()) {

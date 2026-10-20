@@ -1,6 +1,7 @@
 package com.hoaxify.ws.auth;
 
-
+import org.springframework.context.i18n.LocaleContextHolder;
+import org.springframework.security.authentication.DisabledException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -9,6 +10,7 @@ import com.hoaxify.ws.auth.dto.Credentials;
 import com.hoaxify.ws.auth.exception.AuthenticationException;
 import com.hoaxify.ws.auth.token.Token;
 import com.hoaxify.ws.auth.token.TokenService;
+import com.hoaxify.ws.shared.Messages;
 import com.hoaxify.ws.user.User;
 import com.hoaxify.ws.user.UserService;
 import com.hoaxify.ws.user.dto.UserDTO;
@@ -34,6 +36,9 @@ public class AuthService {
             throw new AuthenticationException();
         if (!passwordEncoder.matches(creds.password(), inDB.getPassword()))
             throw new AuthenticationException();
+        if (!inDB.isActive())
+            throw new DisabledException(Messages.getMessageForLocale("hoaxify.auth.user.inactive",
+                    LocaleContextHolder.getLocale()));
         Token token = tokenService.createToken(inDB, creds);
         AuthResponse authResponse = new AuthResponse();
         authResponse.setToken(token);

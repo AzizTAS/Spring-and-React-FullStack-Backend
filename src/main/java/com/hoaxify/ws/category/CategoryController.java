@@ -2,7 +2,9 @@ package com.hoaxify.ws.category;
 
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
+import jakarta.validation.Valid;
 import com.hoaxify.ws.category.dto.CategoryCreate;
 import com.hoaxify.ws.shared.GenericMessage;
 
@@ -27,7 +29,8 @@ public class CategoryController {
     }
 
     @PostMapping
-    public Category createCategory(@RequestBody CategoryCreate dto) {
+    @PreAuthorize("hasRole('ADMIN')")
+    public Category createCategory(@Valid @RequestBody CategoryCreate dto) {
         Category category = new Category();
         category.setName(dto.getName());
         category.setDescription(dto.getDescription());
@@ -35,7 +38,8 @@ public class CategoryController {
     }
 
     @PutMapping("/{id}")
-    public Category updateCategory(@PathVariable Long id, @RequestBody CategoryCreate dto) {
+    @PreAuthorize("hasRole('ADMIN')")
+    public Category updateCategory(@PathVariable Long id, @Valid @RequestBody CategoryCreate dto) {
         Category category = categoryService.getCategory(id);
         category.setName(dto.getName());
         category.setDescription(dto.getDescription());
@@ -43,6 +47,7 @@ public class CategoryController {
     }
 
     @DeleteMapping("/{id}")
+    @PreAuthorize("hasRole('ADMIN')")
     public GenericMessage deleteCategory(@PathVariable Long id) {
         categoryService.deleteCategory(id);
         return new GenericMessage("Category deleted");

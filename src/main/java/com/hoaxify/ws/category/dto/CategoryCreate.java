@@ -1,7 +1,14 @@
 package com.hoaxify.ws.category.dto;
 
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Size;
+
 public class CategoryCreate {
+    @NotBlank(message = "{hoaxify.constraints.category.name.NotBlank.message}")
+    @Size(min = 3, max = 255, message = "{hoaxify.constraints.category.name.Size.message}")
     private String name;
+
+    @Size(max = 1000, message = "{hoaxify.constraints.category.description.Size.message}")
     private String description;
 
     public String getName() { return name; }

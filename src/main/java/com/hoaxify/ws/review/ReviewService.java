@@ -1,5 +1,6 @@
 package com.hoaxify.ws.review;
 
+import org.springframework.security.access.AccessDeniedException;
 import java.time.LocalDateTime;
 
 import org.springframework.data.domain.Page;
@@ -49,7 +50,7 @@ public class ReviewService {
         // Check if user already reviewed this product
         Review existingReview = reviewRepository.findByProductIdAndUserId(productId, currentUser.getId());
         if (existingReview != null) {
-            throw new RuntimeException("You have already reviewed this product");
+            throw new IllegalStateException("You have already reviewed this product");
         }
 
         Review review = new Review();
@@ -67,7 +68,7 @@ public class ReviewService {
 
         // Check if user owns this review
         if (review.getUser().getId() != currentUser.getId()) {
-            throw new RuntimeException("Unauthorized");
+            throw new AccessDeniedException("Unauthorized");
         }
 
         review.setRating(reviewUpdate.getRating());
@@ -83,7 +84,7 @@ public class ReviewService {
 
         // Check if user owns this review
         if (review.getUser().getId() != currentUser.getId()) {
-            throw new RuntimeException("Unauthorized");
+            throw new AccessDeniedException("Unauthorized");
         }
 
         reviewRepository.delete(review);

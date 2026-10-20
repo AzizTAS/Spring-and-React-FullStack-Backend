@@ -2,7 +2,9 @@ package com.hoaxify.ws.product;
 
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
+import jakarta.validation.Valid;
 import com.hoaxify.ws.product.dto.ProductCreate;
 import com.hoaxify.ws.product.dto.ProductDTO;
 import com.hoaxify.ws.shared.GenericMessage;
@@ -38,16 +40,19 @@ public class ProductController {
     }
 
     @PostMapping
-    public ProductDTO createProduct(@RequestBody ProductCreate dto) {
+    @PreAuthorize("hasRole('ADMIN')")
+    public ProductDTO createProduct(@Valid @RequestBody ProductCreate dto) {
         return new ProductDTO(productService.save(dto));
     }
 
     @PutMapping("/{id}")
-    public ProductDTO updateProduct(@PathVariable Long id, @RequestBody ProductCreate dto) {
+    @PreAuthorize("hasRole('ADMIN')")
+    public ProductDTO updateProduct(@PathVariable Long id, @Valid @RequestBody ProductCreate dto) {
         return new ProductDTO(productService.updateProduct(id, dto));
     }
 
     @DeleteMapping("/{id}")
+    @PreAuthorize("hasRole('ADMIN')")
     public GenericMessage deleteProduct(@PathVariable Long id) {
         productService.deleteProduct(id);
         return new GenericMessage("Product deleted");

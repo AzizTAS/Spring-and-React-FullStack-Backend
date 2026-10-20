@@ -40,16 +40,12 @@ public class CartController {
     @PreAuthorize("hasRole('USER') or hasRole('ADMIN')")
     public ResponseEntity<?> addToCart(@AuthenticationPrincipal CurrentUser currentUser,
             @RequestBody AddToCartRequest request) {
-        try {
-            if (request == null || request.getProductId() == null) {
-                return ResponseEntity.badRequest().body("ProductId is required");
-            }
-            int qty = request.getQuantity() > 0 ? request.getQuantity() : 1;
-            cartService.addToCart(currentUser, request.getProductId(), qty);
-            return ResponseEntity.ok("Added to cart");
-        } catch (Exception e) {
-            return ResponseEntity.internalServerError().body("Error: " + e.getMessage());
+        if (request == null || request.getProductId() == null) {
+            return ResponseEntity.badRequest().body("ProductId is required");
         }
+        int qty = request.getQuantity() > 0 ? request.getQuantity() : 1;
+        cartService.addToCart(currentUser, request.getProductId(), qty);
+        return ResponseEntity.ok("Added to cart");
     }
 
     @DeleteMapping("/item/{cartItemId}")

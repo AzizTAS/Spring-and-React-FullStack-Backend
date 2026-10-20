@@ -1,5 +1,9 @@
 package com.hoaxify.ws.cart;
 
+import com.hoaxify.ws.cart.exception.CartNotFoundException;
+import com.hoaxify.ws.product.exception.ProductNotFoundException;
+import com.hoaxify.ws.user.exception.NotFoundException;
+import org.springframework.security.access.AccessDeniedException;
 import java.math.BigDecimal;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -31,7 +35,7 @@ public class CartService {
         if (cart == null) {
             cart = new Cart();
             User user = userRepository.findById(currentUser.getId())
-                    .orElseThrow(() -> new RuntimeException("User not found"));
+                    .orElseThrow(() -> new NotFoundException(currentUser.getId()));
             cart.setUser(user);
             cart = cartRepository.save(cart);
         }
@@ -43,7 +47,7 @@ public class CartService {
         Cart cart = getOrCreateCart(currentUser);
         
         Product product = productRepository.findById(productId)
-                .orElseThrow(() -> new RuntimeException("Product not found: " + productId));
+                .orElseThrow(() -> new ProductNotFoundException(productId));
 
         CartItem cartItem = cartItemRepository.findByCartIdAndProductId(cart.getId(), productId);
         
@@ -64,10 +68,10 @@ public class CartService {
     @Transactional
     public void removeFromCart(CurrentUser currentUser, Long cartItemId) {
         CartItem cartItem = cartItemRepository.findById(cartItemId)
-                .orElseThrow(() -> new RuntimeException("CartItem not found"));
+                .orElseThrow(() -> new CartNotFoundException("Cart item not found: " + cartItemId));
 
         if (cartItem.getCart().getUser().getId() != currentUser.getId()) {
-            throw new RuntimeException("Unauthorized");
+            throw new AccessDeniedException("Unauthorized");
         }
         cartItemRepository.delete(cartItem);
     }
@@ -75,10 +79,10 @@ public class CartService {
     @Transactional
     public void updateCartItemQuantity(CurrentUser currentUser, Long cartItemId, int quantity) {
         CartItem cartItem = cartItemRepository.findById(cartItemId)
-                .orElseThrow(() -> new RuntimeException("CartItem not found"));
+                .orElseThrow(() -> new CartNotFoundException("Cart item not found: " + cartItemId));
 
         if (cartItem.getCart().getUser().getId() != currentUser.getId()) {
-            throw new RuntimeException("Unauthorized");
+            throw new AccessDeniedException("Unauthorized");
         }
 
         if (quantity <= 0) {

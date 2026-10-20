@@ -1,5 +1,6 @@
 package com.hoaxify.ws.order;
 
+import org.springframework.security.access.AccessDeniedException;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -42,7 +43,7 @@ public class OrderController {
     OrderDTO getOrder(@AuthenticationPrincipal CurrentUser currentUser, @PathVariable long id) {
         Order order = orderService.getOrder(id);
         if (order.getUser().getId() != currentUser.getId()) {
-            throw new RuntimeException("Unauthorized");
+            throw new AccessDeniedException("Unauthorized");
         }
         return new OrderDTO(order);
     }
@@ -56,8 +57,19 @@ public class OrderController {
 
     @PutMapping("/{id}/status")
     @PreAuthorize("isAuthenticated()")
-    OrderDTO updateOrderStatus(@PathVariable long id,
+    OrderDTO updateOrderStatus(@AuthenticationPrincipal CurrentUser currentUser, @PathVariable long id,
             @Valid @RequestBody UpdateOrderStatusRequest request) {
+        boolean isAdmin = currentUser.getAuthorities().stream()
+                .anyMatch(a -> a.getAuthority().equals("ROLE_ADMIN"));
+        if (!isAdmin) {
+            Order order = orderService.getOrder(id);
+            if (order.getUser().getId() != currentUser.getId() || request.getStatus() != OrderStatus.CANCELLED) {
+                throw new AccessDeniedException("Unauthorized");
+            }
+            if (order.getStatus() != OrderStatus.PENDING) {
+                throw new IllegalStateException("Only pending orders can be cancelled");
+            }
+        }
         return new OrderDTO(orderService.updateOrderStatus(id, request));
     }
 

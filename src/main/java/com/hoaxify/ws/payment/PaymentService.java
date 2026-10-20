@@ -3,8 +3,10 @@ package com.hoaxify.ws.payment;
 import java.time.LocalDateTime;
 import java.util.UUID;
 
+import org.springframework.security.access.AccessDeniedException;
 import org.springframework.stereotype.Service;
 
+import com.hoaxify.ws.configuration.CurrentUser;
 import com.hoaxify.ws.order.Order;
 import com.hoaxify.ws.order.OrderService;
 import com.hoaxify.ws.order.OrderStatus;
@@ -39,12 +41,18 @@ public class PaymentService {
     }
 
     @Transactional
-    public Payment createPayment(long orderId, CreatePaymentRequest request) {
+    public Payment createPayment(CurrentUser currentUser, long orderId, CreatePaymentRequest request) {
         Order order = orderService.getOrder(orderId);
+        if (order.getUser().getId() != currentUser.getId()) {
+            throw new AccessDeniedException("Unauthorized");
+        }
+        if (order.getStatus() == OrderStatus.CANCELLED) {
+            throw new IllegalStateException("Cancelled orders cannot be paid");
+        }
 
         Payment existingPayment = paymentRepository.findByOrderId(orderId);
         if (existingPayment != null && existingPayment.getStatus() == PaymentStatus.COMPLETED) {
-            throw new RuntimeException("Payment already completed for this order");
+            throw new IllegalStateException("Payment already completed for this order");
         }
 
         Payment payment = new Payment();
